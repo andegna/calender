@@ -1,0 +1,25 @@
+{
+    "name": "andegna/calender",
+    "type": "library",
+    "description": "A set of functions to convert between Ethiopian calender and the Julian Day Number.",
+    "keywords": [ "ethiopian", "calender", "date", "JDN"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sam As End",
+            "email": "sam@andegna.com"
+        }
+    ],
+    "require": {
+        "php": " >= 5.3"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Andegna\\": "src/",
+            "Andegna\\PHPUnit": "test/"
+        }
+    }
+}
