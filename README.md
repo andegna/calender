@@ -14,3 +14,12 @@ A set of functions to convert between Ethiopian calender and the Julian Day Numb
 	// comming soon 
 
 ```
+
+Contributing
+
+    Fork it
+    Create your feature branch (git checkout -b my-new-feature)
+    Commit your changes (git commit -am 'Add some feature')
+    Push to the branch (git push origin my-new-feature)
+    Create new Pull Request
+
