@@ -9,12 +9,13 @@ class JDToEthiopic extends \PHPUnit_Framework_TestCase {
 
     public function testMethodExists()
     {
-//        $this->assertTrue(method_exists('Calender','jdToEthiopian'));
+        $this->assertTrue(method_exists(Calender::class,'jdToEthiopian'));
     }
 
     public function invalidJDNProvider()
     {
         return [
+            [],
             ['sdfsd'],
             [true],
             [new \stdClass()]

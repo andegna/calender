@@ -9,7 +9,7 @@ class EthiopicToJD extends \PHPUnit_Framework_TestCase
 
     public function testMethodExists()
     {
-//        $this->assertTrue(method_exists('Calender','ethiopianToJd'));
+        $this->assertTrue(method_exists(Calender::class,'ethiopianToJd'));
     }
 
     public function invalidDataProvider()

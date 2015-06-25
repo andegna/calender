@@ -9,9 +9,7 @@ class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
 
     public function testMethodExists()
     {
-//        $class = new \ReflectionClass('Calender');
-//        $class->
-//        $this->assertTrue(method_exists('Calender','ethiopianCheckDate'));
+        $this->assertTrue(method_exists(Calender::class,'ethiopianCheckDate'));
     }
 
     public function methodDataProvider()
