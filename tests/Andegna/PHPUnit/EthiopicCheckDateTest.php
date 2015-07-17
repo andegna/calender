@@ -9,7 +9,7 @@ class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
 
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists(Calender::class,'ethiopianCheckDate'));
+        $this->assertTrue(method_exists('\Andegna\Calender','ethiopianCheckDate'));
     }
 
     public function methodDataProvider()

@@ -9,7 +9,7 @@ class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase {
 
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists(Calender::class,'isEthiopianLeapYear'));
+        $this->assertTrue(method_exists('Andegna\Calender','isEthiopianLeapYear'));
     }
 
     public function methodDataProvider() {
