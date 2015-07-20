@@ -20,14 +20,14 @@ class Calender
      */
     public static function isEthiopianLeapYear($year)
     {
-        if (!is_numeric($year)) {
+        if (!is_int($year)) {
             trigger_error(
                 'isEthiopianLeapYear() expects parameter 1 to be numeric. ' .
                 gettype($year) . ' given',
                 E_USER_WARNING
             );
         }
-        return ((int) $year + 1) % 4 == 0;
+        return ($year + 1) % 4 == 0;
     }
 
     /**
@@ -44,7 +44,7 @@ class Calender
     {
         return
             // validate all
-            is_numeric($month) && is_numeric($day) && is_numeric($year) &&
+            is_int($month) && is_int($day) && is_int($year) &&
             // true if the day is btn 1 - 30
             ($day <= 30 && $day >= 1) &&
             // true if the month is btn 1 - 13
@@ -77,7 +77,7 @@ class Calender
         }
         return (1723856 + 365) +
         365 * ($year - 1) +
-        (int)($year / 4) +
+        ($year / 4) +
         30 * $month +
         $day - 31;
     }
@@ -93,7 +93,7 @@ class Calender
      */
     public static function jdToEthiopian($jdn, $array = false)
     {
-        if (!is_numeric($jdn)) {
+        if (!is_int($jdn)) {
             trigger_error(
                 'jdToEthiopian() expects parameter 1 to be numeric. ' .
                 gettype($jdn) . ' given',
