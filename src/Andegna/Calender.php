@@ -77,7 +77,7 @@ class Calender
         }
         return (1723856 + 365) +
         365 * ($year - 1) +
-        ($year / 4) +
+        (int)($year / 4) +
         30 * $month +
         $day - 31;
     }
