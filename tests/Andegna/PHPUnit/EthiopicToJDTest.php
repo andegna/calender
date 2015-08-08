@@ -4,12 +4,11 @@ namespace Andegna\PHPUnit;
 
 use Andegna\Calender;
 
-class EthiopicToJD extends \PHPUnit_Framework_TestCase
+class EthiopicToJDTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists('Andegna\Calender','ethiopianToJd'));
+        $this->assertTrue(method_exists('Andegna\Calender', 'ethiopianToJd'));
     }
 
     public function invalidDataProvider()
@@ -46,7 +45,7 @@ class EthiopicToJD extends \PHPUnit_Framework_TestCase
             [13, 6, 2001, false],
             [13, 6, 2002, false],
             [13, 6, 2004, false],
-            [13, 6, 2006, false]
+            [13, 6, 2006, false],
         ];
     }
 
@@ -97,10 +96,9 @@ class EthiopicToJD extends \PHPUnit_Framework_TestCase
 
             [2817152, 2993, 4, 14],
             [3182395, 3993, 4, 7],
-            [3912880, 5993, 3, 22]
+            [3912880, 5993, 3, 22],
         ];
     }
-
 
     /**
      * @dataProvider validDataProvider
@@ -109,6 +107,4 @@ class EthiopicToJD extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($jdn, Calender::ethiopianToJd($month, $day, $year));
     }
-
 }
- 

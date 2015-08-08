@@ -5,28 +5,26 @@ namespace Andegna;
 /**
  * Class Calender <br />
  * A set of functions to convert ethiopian date to JDN and vise versa.
-
- * @package Andegna
  */
 class Calender
 {
-
     /**
      * Return a true if the year is a leap year based on the ethiopian calendar.
      *
      * @param int $year the ethiopian date to be checked
      *
-     * @return boolean
+     * @return bool
      */
     public static function isEthiopianLeapYear($year)
     {
         if (!is_int($year)) {
             trigger_error(
-                'isEthiopianLeapYear() expects parameter 1 to be numeric. ' .
-                gettype($year) . ' given',
+                'isEthiopianLeapYear() expects parameter 1 to be numeric. '.
+                gettype($year).' given',
                 E_USER_WARNING
             );
         }
+
         return ($year + 1) % 4 == 0;
     }
 
@@ -70,42 +68,45 @@ class Calender
     {
         if (!self::ethiopianCheckDate($month, $day, $year)) {
             trigger_error(
-                'ethiopianToJd() expects the date to be valid.' .
+                'ethiopianToJd() expects the date to be valid.'.
                 ' check ethiopianCheckDate() first',
                 E_USER_WARNING
             );
         }
+
         return (1723856 + 365) +
         365 * ($year - 1) +
-        (int)($year / 4) +
+        (int) ($year / 4) +
         30 * $month +
         $day - 31;
     }
 
     /**
      * Returns the ethiopian date string which is represented by
-     * the passed jdn <br />
+     * the passed jdn <br />.
      *
-     * @param  int  $jdn   the Julian Date Number
-     * @param  bool $array if this is true the function returns
-     *         the day,month and year in associative array.
+     * @param int  $jdn   the Julian Date Number
+     * @param bool $array if this is true the function returns
+     *                    the day,month and year in associative array.
+     *
      * @return array|string
      */
     public static function jdToEthiopian($jdn, $array = false)
     {
         if (!is_int($jdn)) {
             trigger_error(
-                'jdToEthiopian() expects parameter 1 to be numeric. ' .
-                gettype($jdn) . ' given',
+                'jdToEthiopian() expects parameter 1 to be numeric. '.
+                gettype($jdn).' given',
                 E_USER_WARNING
             );
+
             return self::jdToEthiopian(self::ethiopianToJd());
         }
         $r = (($jdn - 1723856) % 1461);
-        $n = ($r % 365) + 365 * (int)($r / 1460);
-        $year = 4 * (int)(($jdn - 1723856) / 1461) +
-            (int)($r / 365) - (int)($r / 1460);
-        $month = (int)($n / 30) + 1;
+        $n = ($r % 365) + 365 * (int) ($r / 1460);
+        $year = 4 * (int) (($jdn - 1723856) / 1461) +
+            (int) ($r / 365) - (int) ($r / 1460);
+        $month = (int) ($n / 30) + 1;
         $day = ($n % 30) + 1;
 
         return ($array ? compact('day', 'month', 'year') : "$month/$day/$year");

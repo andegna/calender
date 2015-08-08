@@ -4,12 +4,11 @@ namespace Andegna\PHPUnit;
 
 use Andegna\Calender;
 
-class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
+class EthiopicCheckDateTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists('\Andegna\Calender','ethiopianCheckDate'));
+        $this->assertTrue(method_exists('\Andegna\Calender', 'ethiopianCheckDate'));
     }
 
     public function methodDataProvider()
@@ -57,7 +56,6 @@ class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
             [1, 25, 2000, true],
             [1, 30, 2000, true],
 
-
             [1, 1, 2000, true],
             [4, 1, 2000, true],
             [7, 1, 2000, true],
@@ -72,7 +70,7 @@ class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
 
             [13, 6, 1999, true],
             [13, 6, 2003, true],
-            [13, 6, 2007, true]
+            [13, 6, 2007, true],
         ];
     }
 
@@ -83,6 +81,4 @@ class EthiopicCheckDate extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($expected, Calender::ethiopianCheckDate($month, $day, $year));
     }
-
 }
- 
