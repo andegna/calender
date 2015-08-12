@@ -2,17 +2,17 @@
 
 namespace Andegna\PHPUnit;
 
-use \Andegna\Calender;
+use Andegna\Calender;
 
-
-class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase {
-
+class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase
+{
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists('Andegna\Calender','isEthiopianLeapYear'));
+        $this->assertTrue(method_exists('Andegna\Calender', 'isEthiopianLeapYear'));
     }
 
-    public function methodDataProvider() {
+    public function methodDataProvider()
+    {
         return [
             [-1 , true], // 1 A.D
             [0 , false],
@@ -27,17 +27,15 @@ class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase {
             [2005 , false],
             [2006 , false],
             [2007 , true],
-            [2008 , false]
+            [2008 , false],
         ];
     }
 
     /**
      * @dataProvider methodDataProvider
      */
-    public function testMethod($year , $expected)
+    public function testMethod($year, $expected)
     {
         $this->assertEquals($expected, Calender::isEthiopianLeapYear($year));
     }
-
 }
- 

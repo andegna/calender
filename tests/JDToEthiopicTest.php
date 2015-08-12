@@ -4,10 +4,8 @@ namespace Andegna\PHPUnit;
 
 use Andegna\Calender;
 
-
 class JDToEthiopicTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testMethodExists()
     {
         $this->assertTrue(method_exists('Andegna\Calender', 'jdToEthiopian'));
@@ -19,7 +17,7 @@ class JDToEthiopicTest extends \PHPUnit_Framework_TestCase
             [],
             ['sdfsd'],
             [true],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 
@@ -34,7 +32,7 @@ class JDToEthiopicTest extends \PHPUnit_Framework_TestCase
 
     public function validDataProvider()
     {
-        return (new EthiopicToJDTest)->validDataProvider();
+        return (new EthiopicToJDTest())->validDataProvider();
     }
 
     /**
@@ -53,8 +51,5 @@ class JDToEthiopicTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($date['day'], $day);
         $this->assertEquals($date['month'], $month);
         $this->assertEquals($date['year'], $year);
-
-
     }
-
 }
