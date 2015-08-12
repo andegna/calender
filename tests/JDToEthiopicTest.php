@@ -2,14 +2,13 @@
 
 namespace Andegna\PHPUnit;
 
-use \Andegna\Calender;
+use Andegna\Calender;
 
-
-class JDToEthiopic extends \PHPUnit_Framework_TestCase {
-
+class JDToEthiopicTest extends \PHPUnit_Framework_TestCase
+{
     public function testMethodExists()
     {
-        $this->assertTrue(method_exists('Andegna\Calender','jdToEthiopian'));
+        $this->assertTrue(method_exists('Andegna\Calender', 'jdToEthiopian'));
     }
 
     public function invalidJDNProvider()
@@ -18,7 +17,7 @@ class JDToEthiopic extends \PHPUnit_Framework_TestCase {
             [],
             ['sdfsd'],
             [true],
-            [new \stdClass()]
+            [new \stdClass()],
         ];
     }
 
@@ -33,7 +32,7 @@ class JDToEthiopic extends \PHPUnit_Framework_TestCase {
 
     public function validDataProvider()
     {
-        return (new EthiopicToJD)->validDataProvider();
+        return (new EthiopicToJD())->validDataProvider();
     }
 
     /**
@@ -43,17 +42,14 @@ class JDToEthiopic extends \PHPUnit_Framework_TestCase {
     {
         $this->assertEquals("$month/$day/$year", Calender::jdToEthiopian($jdn));
 
-        $date = Calender::jdToEthiopian($jdn,true);
+        $date = Calender::jdToEthiopian($jdn, true);
 
-        $this->assertArrayHasKey('day',$date);
-        $this->assertArrayHasKey('month',$date);
-        $this->assertArrayHasKey('year',$date);
+        $this->assertArrayHasKey('day', $date);
+        $this->assertArrayHasKey('month', $date);
+        $this->assertArrayHasKey('year', $date);
 
-        $this->assertEquals($date['day'],$day);
-        $this->assertEquals($date['month'],$month);
-        $this->assertEquals($date['year'],$year);
-
-
+        $this->assertEquals($date['day'], $day);
+        $this->assertEquals($date['month'], $month);
+        $this->assertEquals($date['year'], $year);
     }
-
 }
