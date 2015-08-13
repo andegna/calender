@@ -4,7 +4,7 @@ namespace Andegna\PHPUnit;
 
 use Andegna\Calender;
 
-class EthiopicToJD extends \PHPUnit_Framework_TestCase
+class EthiopicToJDTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testMethodExists()
