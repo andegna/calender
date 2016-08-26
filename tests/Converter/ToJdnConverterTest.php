@@ -1,17 +1,12 @@
 <?php
 
-namespace Andegna\PHPUnit;
+namespace Andegna\PHPUnit\Converter;
 
-use Andegna\Calender;
+use Andegna\Converter\ToJdnConverter;
 
-class EthiopicToJDTest extends \PHPUnit_Framework_TestCase
+class ToJdnConverterTest extends \PHPUnit_Framework_TestCase
 {
-    public function testMethodExists()
-    {
-        $this->assertTrue(method_exists('Andegna\Calender', 'ethiopianToJd'));
-    }
-
-    public function invalidDataProvider()
+    public function invalidJDNDataProvider()
     {
         return [
             // invalid argument
@@ -50,16 +45,19 @@ class EthiopicToJDTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider invalidDataProvider
-     * @expectedException \PHPUnit_Framework_Error_Warning
-     * @expectedExceptionMessage ethiopianToJd() expects the date to be valid. check ethiopianCheckDate() first
+     * @dataProvider invalidJDNDataProvider
+     * @expectedException \Andegna\Exception\InvalidDateException
+     *
+     * @param $month
+     * @param $day
+     * @param $year
      */
-    public function testWarningOnInvalidData($month, $day, $year)
+    public function test_exception_is_thrown_on_an_invalid_data($month, $day, $year)
     {
-        Calender::ethiopianToJd($month, $day, $year);
+        new ToJdnConverter($day, $month, $year);
     }
 
-    public function validDataProvider()
+    public function validJDNDataProvider()
     {
         return [
             [2401443, 1855, 2, 20],
@@ -101,10 +99,17 @@ class EthiopicToJDTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider validDataProvider
+     * @dataProvider validJDNDataProvider
+     *
+     * @param $jdn
+     * @param $year
+     * @param $month
+     * @param $day
      */
-    public function testMethod($jdn, $year, $month, $day)
+    public function test_conversion_to_jdn($jdn, $year, $month, $day)
     {
-        $this->assertEquals($jdn, Calender::ethiopianToJd($month, $day, $year));
+        $converter = new ToJdnConverter($day, $month, $year);
+
+        $this->assertEquals($jdn, $converter->getJdn());
     }
 }
