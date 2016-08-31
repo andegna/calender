@@ -9,57 +9,50 @@ use DateTime as BaseDateTime;
 use DateTimeZone;
 
 /**
- * Class DateTime
+ * Class DateTime.
  *
  * @method getYear
  * @method getMonth
  * @method getDay
- *
  * @method getDayOfYear
  * @method getDaysInMonth
- *
  * @method getIsoWeekNumber
  * @method getIsoYearNumber
- *
  * @method isLeapYear
- *
  * @method getHour
  * @method getMinute
  * @method getSecond
- *
  * @method getMicro
  * @method getDayOfWeek
  * @method getTimestamp
- *
- * @package Andegna\Ethiopian
  */
 class DateTime implements DateConstant
 {
     use DateTimeProcessor,
         DateFormatter;
 
-    /** @var  integer */
+    /** @var int */
     protected $year;
 
-    /** @var  integer */
+    /** @var int */
     protected $month;
 
-    /** @var  integer */
+    /** @var int */
     protected $day;
 
-    /** @var  integer */
+    /** @var int */
     protected $dayOfYear;
 
-    /** @var  integer */
+    /** @var int */
     protected $daysInMonth;
 
-    /** @var  integer */
+    /** @var int */
     protected $isoWeekNumber;
 
-    /** @var  integer */
+    /** @var int */
     protected $isoYearNumber;
 
-    /** @var boolean */
+    /** @var bool */
     protected $leapYear;
 
     /** @var BaseDateTime dateTime */
@@ -93,7 +86,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * This fields are just for catching
+     * This fields are just for catching.
      *
      * @return void
      */
@@ -109,9 +102,10 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Return the JDN of the given gregorian date time
+     * Return the JDN of the given gregorian date time.
      *
      * @param BaseDateTime $dateTime
+     *
      * @return int
      */
     protected function getJdnFromBase(BaseDateTime $dateTime)
@@ -124,9 +118,10 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Set the converted year, month and day from the given converter
+     * Set the converted year, month and day from the given converter.
      *
      * @param Converter $converter
+     *
      * @return void
      */
     protected function setDateFromConverter(Converter $converter)
@@ -137,7 +132,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Computer the available properties
+     * Computer the available properties.
      *
      * @return void
      */
@@ -150,7 +145,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Compute the leapYear property
+     * Compute the leapYear property.
      *
      * @return void
      */
@@ -162,7 +157,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Compute the dayOfYear property
+     * Compute the dayOfYear property.
      *
      * @return void
      */
@@ -172,7 +167,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Compute the daysInMonth property
+     * Compute the daysInMonth property.
      *
      * @return void
      */
@@ -186,7 +181,7 @@ class DateTime implements DateConstant
     }
 
     /**
-     * Compute the isoWeekNumber and isoYearNumber properties
+     * Compute the isoWeekNumber and isoYearNumber properties.
      *
      * @return void
      */
@@ -212,7 +207,7 @@ class DateTime implements DateConstant
      */
     protected function getISOWeekNumberEstimate()
     {
-        return (int)floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
+        return (int) floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
     }
 
     /**
@@ -226,6 +221,7 @@ class DateTime implements DateConstant
 
     /**
      * @param $year
+     *
      * @return bool
      */
     protected function doesYearHas53Weeks($year)
@@ -233,17 +229,17 @@ class DateTime implements DateConstant
         $leapYear = (new LeapYearValidator($year))->isValid();
         $lastDayOfTheWeek = DateTimeFactory::lastDayOf($year)->getDayOfWeek();
 
-        return (($lastDayOfTheWeek == 5 && !$leapYear)
-            || $lastDayOfTheWeek != 4);
+        return ($lastDayOfTheWeek == 5 && !$leapYear)
+            || $lastDayOfTheWeek != 4;
     }
 
     /**
-     * Return the <b>clone</b> of the base gregorian date time
+     * Return the <b>clone</b> of the base gregorian date time.
      *
      * @return BaseDateTime
      */
     public function toGregorian()
     {
-        return (clone $this->dateTime);
+        return clone $this->dateTime;
     }
 }

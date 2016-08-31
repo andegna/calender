@@ -31,10 +31,10 @@ class ToJdnConverter extends Converter
 
     public static function process($day, $month, $year)
     {
-        return ((1723856 + 365) +
+        return (1723856 + 365) +
             365 * ($year - 1) +
-            (int)($year / 4) +
+            (int) ($year / 4) +
             30 * $month +
-            $day - 31);
+            $day - 31;
     }
 }

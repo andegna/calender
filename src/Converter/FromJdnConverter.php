@@ -31,11 +31,11 @@ class FromJdnConverter extends Converter
     public static function process($jdn)
     {
         $r = (($jdn - 1723856) % 1461);
-        $n = ($r % 365) + 365 * (int)($r / 1460);
+        $n = ($r % 365) + 365 * (int) ($r / 1460);
 
-        $year = 4 * (int)(($jdn - 1723856) / 1461) +
-            (int)($r / 365) - (int)($r / 1460);
-        $month = (int)($n / 30) + 1;
+        $year = 4 * (int) (($jdn - 1723856) / 1461) +
+            (int) ($r / 365) - (int) ($r / 1460);
+        $month = (int) ($n / 30) + 1;
         $day = ($n % 30) + 1;
 
         return compact('day', 'month', 'year');

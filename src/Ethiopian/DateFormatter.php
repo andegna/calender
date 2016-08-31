@@ -5,23 +5,21 @@ namespace Andegna\Ethiopian;
 use InvalidArgumentException;
 
 /**
- * Trait DateFormatter
+ * Trait DateFormatter.
  *
  * This trait deals with the date time formatting issue
- *
- * @package Andegna\Ethiopian
  */
 trait DateFormatter
 {
-
     /**
-     * I got the Magic :) call
+     * I got the Magic :) call.
      *
      * @param $name
      * @param $arguments
+     *
      * @return int|string
      */
-    function __call($name, $arguments)
+    public function __call($name, $arguments)
     {
         $field = $this->extractCalledField($name);
 
@@ -35,20 +33,21 @@ trait DateFormatter
             'second' => 's',
             'micro' => 'u',
             'dayOfWeek' => 'N',
-            'timestamp' => 'U'])) {
-            return (int)$this->format($formats[$field]);
+            'timestamp' => 'U', ])) {
+            return (int) $this->format($formats[$field]);
         }
 
         return $this->format($field);
     }
 
     /**
-     * Extract the name of the getter function
+     * Extract the name of the getter function.
      *
      * eg: given 'getDayOfWeek' return 'dayOfWeek'
      *     given 'isFinished' return 'finished'
      *
      * @param $name
+     *
      * @return string
      */
     protected function extractCalledField($name)
@@ -63,17 +62,18 @@ trait DateFormatter
     }
 
     /**
-     * Accepts the same format as the date() function
+     * Accepts the same format as the date() function.
      *
      * @see date(), \DateTime
      *
      * @param $format
+     *
      * @return string
      */
     public function format($format)
     {
-        $result = "";
-        /** @var integer $length */
+        $result = '';
+        /** @var int $length */
         $length = mb_strlen($format);
 
         // iterate for each character
@@ -85,9 +85,10 @@ trait DateFormatter
     }
 
     /**
-     * Return the value of the format character
+     * Return the value of the format character.
      *
      * @param string $name of the field
+     *
      * @return string
      */
     protected function getValueOfFormatCharacter($name)
@@ -106,6 +107,7 @@ trait DateFormatter
             // (ሰኞ-እሑ) A textual representation of a day, two letters
             case 'D':
                 $week = $this->getValueOfFormatCharacter('l');
+
                 return mb_substr($week, 0, 2, 'UTF-8');
 
             // (1-30) Day of the month without leading zeros
@@ -136,11 +138,13 @@ trait DateFormatter
             // (01-13) Numeric representation of a month, with leading zeros
             case 'm':
                 $n = $this->getValueOfFormatCharacter('n');
+
                 return (strlen($n) == 1) ? "0$n" : "$n";
 
             // (መስ - ጳጉ) A short textual representation of a month, two letters
             case 'M':
                 $F = $this->getValueOfFormatCharacter('F');
+
                 return mb_substr($F, 0, 2, 'UTF-8');
 
             // (1-13) Numeric representation of a month, without leading zeros
@@ -169,6 +173,7 @@ trait DateFormatter
             // (00-99) A two digit representation of a year
             case 'y':
                 $Y = $this->getValueOfFormatCharacter('Y');
+
                 return mb_substr($Y, strlen($Y) - 2, 2);
 
             // (እኩለ፡ሌሊት-ምሽት)
@@ -196,9 +201,10 @@ trait DateFormatter
     }
 
     /**
-     * Return the amharic equivalent of AM & PM
+     * Return the amharic equivalent of AM & PM.
      *
      * @link http://web.archive.org/web/20140331152859/http://ethiopic.org/Calendars/
+     *
      * @return string
      */
     public function getTimeOfDay()

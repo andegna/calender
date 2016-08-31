@@ -40,14 +40,14 @@ class DateValidator implements Validator
 
     protected function isValidDayRange($day)
     {
-        return ($day >= self::FIRST_DAY &&
-            $day <= self::LAST_DAY);
+        return $day >= self::FIRST_DAY &&
+            $day <= self::LAST_DAY;
     }
 
     protected function isValidMonthRange($month)
     {
-        return ($month >= self::FIRST_MONTH &&
-            $month <= self::LAST_MONTH);
+        return $month >= self::FIRST_MONTH &&
+            $month <= self::LAST_MONTH;
     }
 
     protected function isValidPagumeDayRange($day, $month)

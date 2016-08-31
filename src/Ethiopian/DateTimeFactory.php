@@ -10,9 +10,10 @@ use DateTimeZone;
 class DateTimeFactory
 {
     /**
-     * Create a date time representing now
+     * Create a date time representing now.
      *
      * @param DateTimeZone|null $dateTimeZone
+     *
      * @return DateTime
      */
     public static function now(DateTimeZone $dateTimeZone = null)
@@ -26,6 +27,7 @@ class DateTimeFactory
 
     /**
      * @param $dateTimeZone
+     *
      * @return DateTimeZone
      */
     protected static function defaultDateTimeZone($dateTimeZone)
@@ -38,10 +40,11 @@ class DateTimeFactory
     }
 
     /**
-     * Get the last day of year and month
+     * Get the last day of year and month.
      *
      * @param $year
      * @param int $month
+     *
      * @return DateTime
      */
     public static function lastDayOf($year, $month = 13)
@@ -59,12 +62,12 @@ class DateTimeFactory
     /**
      * Create a DateTime of year month day ...
      *
-     * @param int $year
-     * @param int $month
-     * @param int $day
-     * @param int $hour
-     * @param int $minute
-     * @param int $second
+     * @param int               $year
+     * @param int               $month
+     * @param int               $day
+     * @param int               $hour
+     * @param int               $minute
+     * @param int               $second
      * @param DateTimeZone|null $dateTimeZone
      *
      * @return DateTime
@@ -78,7 +81,7 @@ class DateTimeFactory
         $second = 0,
         DateTimeZone $dateTimeZone = null
     ) {
-    
+
         // Convert to Julian Date Number
         $jdn = (new ToJdnConverter($day, $month, $year))->getJdn();
 

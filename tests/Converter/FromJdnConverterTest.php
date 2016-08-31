@@ -21,6 +21,7 @@ class FromJdnConverterTest extends \PHPUnit_Framework_TestCase
      * @dataProvider invalidJDNDataProvider
      *
      * @expectedException \Andegna\Exception\InvalidDateException
+     *
      * @param $jdn
      */
     public function test_exception_is_thrown_on_an_invalid_data($jdn)
@@ -31,12 +32,14 @@ class FromJdnConverterTest extends \PHPUnit_Framework_TestCase
     public function validJDNDataProvider()
     {
         $this->assertTrue(class_exists('Andegna\PHPUnit\Converter\ToJdnConverterTest'));
+
         return (new ToJdnConverterTest())
             ->validJDNDataProvider();
     }
 
     /**
      * @dataProvider validJDNDataProvider
+     *
      * @param $jdn
      * @param $year
      * @param $month

@@ -3,21 +3,19 @@
 namespace Andegna\Ethiopian;
 
 /**
- * Interface Constants
- *
- * @package Andegna\Ethiopian
+ * Interface Constants.
  */
 interface DateConstant
 {
     const MONTHS_NAME = [
         1 => 'መስከረም', 'ጥቅምት', 'ኅዳር', 'ታኅሣሥ',
         'ጥር', 'የካቲት', 'መጋቢት', 'ሚያዝያ', 'ግንቦት',
-        'ሰኔ', 'ሐምሌ', 'ነሐሴ', 'ጳጉሜን'
+        'ሰኔ', 'ሐምሌ', 'ነሐሴ', 'ጳጉሜን',
     ];
 
     const WEEK_NAME_AM = [
         1 => 'ሰኞ', 'ማክሰኞ', 'ረቡዕ',
-        'ሓሙስ', 'ዓርብ', 'ቅዳሜ', 'እሑድ'
+        'ሓሙስ', 'ዓርብ', 'ቅዳሜ', 'እሑድ',
     ];
 
     const ORTHODOX_DAY_NAME = [

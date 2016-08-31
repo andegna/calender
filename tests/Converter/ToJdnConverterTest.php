@@ -47,6 +47,7 @@ class ToJdnConverterTest extends \PHPUnit_Framework_TestCase
     /**
      * @dataProvider invalidJDNDataProvider
      * @expectedException \Andegna\Exception\InvalidDateException
+     *
      * @param $month
      * @param $day
      * @param $year
@@ -99,6 +100,7 @@ class ToJdnConverterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider validJDNDataProvider
+     *
      * @param $jdn
      * @param $year
      * @param $month
