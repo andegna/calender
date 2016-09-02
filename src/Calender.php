@@ -109,6 +109,6 @@ class Calender
         $month = (int) ($n / 30) + 1;
         $day = ($n % 30) + 1;
 
-        return ($array ? compact('day', 'month', 'year') : "$month/$day/$year");
+        return $array ? compact('day', 'month', 'year') : "$month/$day/$year";
     }
 }
