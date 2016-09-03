@@ -1,17 +1,12 @@
 <?php
 
-namespace Andegna\PHPUnit;
+namespace Andegna\PHPUnit\Validator;
 
-use Andegna\Calender;
+use Andegna\Validator\LeapYearValidator;
 
-class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase
+class LeapYearValidatorTest extends \PHPUnit_Framework_TestCase
 {
-    public function testMethodExists()
-    {
-        $this->assertTrue(method_exists('Andegna\Calender', 'isEthiopianLeapYear'));
-    }
-
-    public function methodDataProvider()
+    public function yearDateProvider()
     {
         return [
             [-1, true], // 1 A.D
@@ -32,10 +27,12 @@ class IsEthiopicLeapYearTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider methodDataProvider
+     * @dataProvider yearDateProvider
      */
     public function testMethod($year, $expected)
     {
-        $this->assertEquals($expected, Calender::isEthiopianLeapYear($year));
+        $validator = new LeapYearValidator($year);
+
+        $this->assertEquals($expected, $validator->isValid());
     }
 }
