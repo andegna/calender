@@ -7,14 +7,21 @@ class DateValidator implements Validator
     use ValidIntegerValidator;
 
     const FIRST_DAY = 1;
+
     const FIRST_MONTH = self::FIRST_DAY;
+
     const LAST_DAY = 30;
+
     const LAST_MONTH = 13;
+
     const PAGUME_LAST_DAY = 5;
+
     const PAGUME_LEAP_YEAR_LAST_DAY = 6;
 
     private $day;
+
     private $month;
+
     private $year;
 
     public function __construct($day, $month, $year)
@@ -41,13 +48,13 @@ class DateValidator implements Validator
     protected function isValidDayRange($day)
     {
         return $day >= self::FIRST_DAY &&
-            $day <= self::LAST_DAY;
+        $day <= self::LAST_DAY;
     }
 
     protected function isValidMonthRange($month)
     {
         return $month >= self::FIRST_MONTH &&
-            $month <= self::LAST_MONTH;
+        $month <= self::LAST_MONTH;
     }
 
     protected function isValidPagumeDayRange($day, $month)

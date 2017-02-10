@@ -18,6 +18,7 @@ trait DateFormatter
      * @param $arguments
      *
      * @return int|string
+     * @throws \InvalidArgumentException
      */
     public function __call($name, $arguments)
     {
@@ -27,14 +28,17 @@ trait DateFormatter
             return $this->{$field};
         }
 
-        if (array_key_exists($field, $formats = [
-            'hour' => 'G',
-            'minute' => 'i',
-            'second' => 's',
-            'micro' => 'u',
+        if (array_key_exists(
+            $field, $formats = [
+            'hour'      => 'G',
+            'minute'    => 'i',
+            'second'    => 's',
+            'micro'     => 'u',
             'dayOfWeek' => 'N',
-            'timestamp' => 'U', ])) {
-            return (int) $this->format($formats[$field]);
+            'timestamp' => 'U',
+        ]
+        )) {
+            return (int)$this->format($formats[$field]);
         }
 
         return $this->format($field);
@@ -49,6 +53,7 @@ trait DateFormatter
      * @param $name
      *
      * @return string
+     * @throws \InvalidArgumentException
      */
     protected function extractCalledField($name)
     {
@@ -249,7 +254,7 @@ trait DateFormatter
         // We shouldn't get to this :(
         // Something must been wrong
 
-        // Lets just keep quite about it :)
+        // Lets just keep quite about it ;)
         return '';
     }
 }

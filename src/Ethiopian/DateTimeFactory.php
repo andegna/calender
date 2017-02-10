@@ -42,7 +42,7 @@ class DateTimeFactory
     /**
      * Get the last day of year and month.
      *
-     * @param $year
+     * @param     $year
      * @param int $month
      *
      * @return DateTime
@@ -90,8 +90,22 @@ class DateTimeFactory
 
         $dateTimeZone = self::defaultDateTimeZone($dateTimeZone);
 
-        $base = new BaseDateTime("$gregorian $hour:$minute:$second", $dateTimeZone);
+        $base = new BaseDateTime("$gregorian $hour:$minute:$second",
+            $dateTimeZone);
 
         return new DateTime($base);
     }
+
+    /**
+     * @param $timestamp
+     *
+     * @return DateTime
+     */
+    public static function fromTimestamp($timestamp)
+    {
+        $baseDateTime = new BaseDateTime('U', $timestamp);
+
+        return new DateTime($baseDateTime);
+    }
+
 }

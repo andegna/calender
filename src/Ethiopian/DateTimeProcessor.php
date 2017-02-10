@@ -4,6 +4,12 @@ namespace Andegna\Ethiopian;
 
 use Andegna\Converter\ToJdnConverter;
 
+/**
+ * DateTimeProcessor trait <br />
+ * works on dateTime property
+ *
+ * @package Andegna\Ethiopian
+ */
 trait DateTimeProcessor
 {
     public function add($interval)
@@ -38,7 +44,7 @@ trait DateTimeProcessor
             $year) = explode('/', $gregorian);
 
         return new DateTime(
-            $this->dateTime->setDate((int) $year, (int) $month, (int) $day)
+            $this->dateTime->setDate((int)$year, (int)$month, (int)$day)
         );
     }
 

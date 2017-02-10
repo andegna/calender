@@ -9,7 +9,7 @@ use DateTime as BaseDateTime;
 use DateTimeZone;
 
 /**
- * Class DateTime.
+ * Ethiopian DateTime class.
  *
  * @method getYear
  * @method getMonth
@@ -52,10 +52,10 @@ class DateTime
     /** @var int */
     protected $isoYearNumber;
 
-    /** @var bool */
+    /** @var int */
     protected $leapYear;
 
-    /** @var BaseDateTime dateTime */
+    /** @var int */
     protected $dateTime;
 
     /**
@@ -207,7 +207,7 @@ class DateTime
      */
     protected function getISOWeekNumberEstimate()
     {
-        return (int) floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
+        return (int)floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
     }
 
     /**
