@@ -220,7 +220,7 @@ class DateTime
     }
 
     /**
-     * @param $year
+     * @param integer $year
      *
      * @return bool
      */
