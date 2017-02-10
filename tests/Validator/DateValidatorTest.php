@@ -4,7 +4,7 @@ namespace Andegna\PHPUnit\Validator;
 
 use Andegna\Validator\DateValidator;
 
-class DateValidatorTest extends \PHPUnit_Framework_TestCase
+class DateValidatorTest extends \PHPUnit\Framework\TestCase
 {
     public function dateDataProvider()
     {

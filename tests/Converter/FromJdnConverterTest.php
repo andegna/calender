@@ -4,7 +4,7 @@ namespace Andegna\PHPUnit\Converter;
 
 use Andegna\Converter\FromJdnConverter;
 
-class FromJdnConverterTest extends \PHPUnit_Framework_TestCase
+class FromJdnConverterTest extends \PHPUnit\Framework\TestCase
 {
     public function invalidJDNDataProvider()
     {

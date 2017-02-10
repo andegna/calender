@@ -4,7 +4,7 @@ namespace Andegna\PHPUnit\Exception;
 
 use Andegna\Exception\InvalidDateException;
 
-class InvalidDateExceptionTest extends \PHPUnit_Framework_TestCase
+class InvalidDateExceptionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @expectedException \Andegna\Exception\InvalidDateException

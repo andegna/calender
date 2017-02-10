@@ -5,7 +5,7 @@ namespace Andegna\PHPUnit\Ethiopian;
 use Andegna\Ethiopian\DateTimeFactory;
 use DateInterval;
 
-class DateTimeTest extends \PHPUnit_Framework_TestCase
+class DateTimeTest extends \PHPUnit\Framework\TestCase
 {
     public function test_Me()
     {
