@@ -207,7 +207,7 @@ class DateTime
      */
     protected function getISOWeekNumberEstimate()
     {
-        return (int)floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
+        return (int) floor(($this->getDayOfYear() - $this->getDayOfWeek() + 10) / 7);
     }
 
     /**
