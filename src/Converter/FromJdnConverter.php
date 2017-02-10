@@ -5,9 +5,7 @@ namespace Andegna\Converter;
 use Andegna\Exception\InvalidDateException;
 
 /**
- * FromJdnConverter
- *
- * @package Andegna\Converter
+ * FromJdnConverter.
  */
 class FromJdnConverter extends Converter
 {
@@ -26,8 +24,9 @@ class FromJdnConverter extends Converter
     /**
      * @param $jdn
      *
-     * @return $this
      * @throws \Andegna\Exception\InvalidDateException
+     *
+     * @return $this
      */
     public function set($jdn)
     {

@@ -5,9 +5,7 @@ namespace Andegna\Converter;
 use Andegna\Validator\ValidIntegerValidator;
 
 /**
- * Converter abstraction
- *
- * @package Andegna\Converter
+ * Converter abstraction.
  */
 abstract class Converter
 {

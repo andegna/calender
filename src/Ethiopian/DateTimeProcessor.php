@@ -6,9 +6,7 @@ use Andegna\Converter\ToJdnConverter;
 
 /**
  * DateTimeProcessor trait <br />
- * works on dateTime property
- *
- * @package Andegna\Ethiopian
+ * works on dateTime property.
  */
 trait DateTimeProcessor
 {

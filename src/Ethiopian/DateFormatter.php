@@ -17,8 +17,9 @@ trait DateFormatter
      * @param $name
      * @param $arguments
      *
-     * @return int|string
      * @throws \InvalidArgumentException
+     *
+     * @return int|string
      */
     public function __call($name, $arguments)
     {
@@ -52,8 +53,9 @@ trait DateFormatter
      *
      * @param $name
      *
-     * @return string
      * @throws \InvalidArgumentException
+     *
+     * @return string
      */
     protected function extractCalledField($name)
     {
