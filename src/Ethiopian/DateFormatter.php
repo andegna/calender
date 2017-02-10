@@ -71,7 +71,7 @@ trait DateFormatter
      *
      * @see date(), \DateTime
      *
-     * @param $format
+     * @param string $format
      *
      * @return string
      */
