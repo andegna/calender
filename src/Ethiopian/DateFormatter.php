@@ -38,7 +38,7 @@ trait DateFormatter
             'timestamp' => 'U',
         ]
         )) {
-            return (int)$this->format($formats[$field]);
+            return (int) $this->format($formats[$field]);
         }
 
         return $this->format($field);

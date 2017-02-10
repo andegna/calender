@@ -57,7 +57,7 @@ class ToJdnConverter extends Converter
         return
             (1723856 + 365) +
             365 * ($year - 1) +
-            (int)($year / 4) +
+            (int) ($year / 4) +
             30 * $month +
             $day - 31;
     }
