@@ -4,18 +4,8 @@ namespace Andegna\PHPUnit\Converter;
 
 use Andegna\Converter\FromJdnConverter;
 
-class FromJdnConverterTest extends \PHPUnit_Framework_TestCase
+class FromJdnConverterTest extends ConverterTest
 {
-    public function invalidJDNDataProvider()
-    {
-        return [
-            [null],
-            [[4, 2, 0]],
-            ['lorem ipsum'],
-            [true],
-            [new \stdClass()],
-        ];
-    }
 
     /**
      * @dataProvider invalidJDNDataProvider
@@ -27,14 +17,6 @@ class FromJdnConverterTest extends \PHPUnit_Framework_TestCase
     public function test_exception_is_thrown_on_an_invalid_data($jdn)
     {
         new FromJdnConverter($jdn);
-    }
-
-    public function validJDNDataProvider()
-    {
-        $this->assertTrue(class_exists('Andegna\PHPUnit\Converter\ToJdnConverterTest'));
-
-        return (new ToJdnConverterTest())
-            ->validJDNDataProvider();
     }
 
     /**

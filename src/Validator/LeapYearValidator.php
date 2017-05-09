@@ -15,12 +15,13 @@ class LeapYearValidator implements Validator
 
     public function isValid()
     {
-        return $this->isValidInteger($this->year) &&
-            $this->isValidYear($this->year);
+        return
+            $this->isValidInteger($this->year) &&
+            $this->isValidLeapYear($this->year);
     }
 
-    protected function isValidYear($year)
+    protected function isValidLeapYear($year)
     {
-        return ($year + 1) % 4 == 0;
+        return ($year + 1) % 4 === 0;
     }
 }

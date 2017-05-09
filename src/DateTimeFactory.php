@@ -1,6 +1,6 @@
 <?php
 
-namespace Andegna\Ethiopian;
+namespace Andegna;
 
 use Andegna\Converter\ToJdnConverter;
 use Andegna\Validator\LeapYearValidator;
@@ -39,25 +39,6 @@ class DateTimeFactory
         return $dateTimeZone;
     }
 
-    /**
-     * Get the last day of year and month.
-     *
-     * @param $year
-     * @param int $month
-     *
-     * @return DateTime
-     */
-    public static function lastDayOf($year, $month = 13)
-    {
-        $leapYear = (new LeapYearValidator($year))->isValid();
-        $lastDay = 30;
-
-        if ($month == 13) {
-            $lastDay = $leapYear ? 6 : 5;
-        }
-
-        return static::of($year, $month, $lastDay);
-    }
 
     /**
      * Create a DateTime of year month day ...
@@ -90,8 +71,22 @@ class DateTimeFactory
 
         $dateTimeZone = self::defaultDateTimeZone($dateTimeZone);
 
-        $base = new BaseDateTime("$gregorian $hour:$minute:$second", $dateTimeZone);
+        $base = new BaseDateTime("$gregorian $hour:$minute:$second",
+            $dateTimeZone);
 
         return new DateTime($base);
     }
+
+    /**
+     * @param $timestamp
+     *
+     * @return DateTime
+     */
+    public static function fromTimestamp($timestamp)
+    {
+        $baseDateTime = new BaseDateTime(date('c', $timestamp));
+
+        return new DateTime($baseDateTime);
+    }
+
 }

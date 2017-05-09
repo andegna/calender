@@ -1,7 +1,7 @@
 {
 	"name": "andegna/calender",
 	"type": "library",
-	"description": "Handles Ethiopian Calender in an modern way.",
+	"description": "everything you need to deal with an Ethiopian calender.",
 	"keywords": ["ethiopian", "date", "calender", "JDN"],
 	"license": "MIT",
 	"support": {
@@ -15,11 +15,11 @@
 		}
 	],
 	"require": {
-		"php": "^5.4 || ^7.0",
+		"php": "^5.6 || ^7.0",
 		"ext-calendar": "*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~4.0"
+		"phpunit/phpunit": "~5.0"
 	},
 	"autoload": {
 		"psr-4": {

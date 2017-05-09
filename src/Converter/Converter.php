@@ -4,18 +4,34 @@ namespace Andegna\Converter;
 
 use Andegna\Validator\ValidIntegerValidator;
 
+/**
+ * Converter abstraction
+ *
+ * @see FromJdnConverter
+ * @see ToJdnConverter
+ *
+ * @package Andegna\Converter
+ */
 abstract class Converter
 {
     use ValidIntegerValidator;
 
+    /** @var int */
     protected $day;
+
+    /** @var int */
     protected $month;
+
+    /** @var int */
     protected $year;
 
+    /** @var int */
     protected $jdn;
 
     /**
-     * @return mixed
+     * Get the day
+     *
+     * @return int
      */
     public function getDay()
     {
@@ -23,7 +39,9 @@ abstract class Converter
     }
 
     /**
-     * @return mixed
+     * Get the month
+     *
+     * @return int
      */
     public function getMonth()
     {
@@ -31,7 +49,9 @@ abstract class Converter
     }
 
     /**
-     * @return mixed
+     * Get the year
+     *
+     * @return int
      */
     public function getYear()
     {
@@ -39,10 +59,13 @@ abstract class Converter
     }
 
     /**
-     * @return mixed
+     * Get the JDN
+     *
+     * @return int
      */
     public function getJdn()
     {
         return $this->jdn;
     }
+
 }

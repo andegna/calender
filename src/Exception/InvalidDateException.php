@@ -4,10 +4,20 @@ namespace Andegna\Exception;
 
 use Exception;
 
+/**
+ * Invalid Date Exception
+ */
 class InvalidDateException extends Exception
 {
-    public function __construct()
+
+    /**
+     * InvalidDateException constructor.
+     *
+     * @param $message string
+     */
+    public function __construct($message = 'Invalid date was given')
     {
-        parent::__construct('Invalid date was given');
+        parent::__construct($message);
     }
+
 }

@@ -1,11 +1,19 @@
 <?php
 
-namespace Andegna\Ethiopian;
+namespace Andegna\Operations;
 
 use Andegna\Converter\ToJdnConverter;
+use Andegna\DateTime;
 
-trait DateTimeProcessor
+/**
+ * Processor trait <br />
+ * works on dateTime property
+ *
+ * @package Andegna\Operations
+ */
+trait Processor
 {
+
     public function add($interval)
     {
         return new DateTime($this->dateTime->add($interval));
@@ -38,7 +46,7 @@ trait DateTimeProcessor
             $year) = explode('/', $gregorian);
 
         return new DateTime(
-            $this->dateTime->setDate((int) $year, (int) $month, (int) $day)
+            $this->dateTime->setDate((int)$year, (int)$month, (int)$day)
         );
     }
 
@@ -77,4 +85,5 @@ trait DateTimeProcessor
     {
         return $this->dateTime->__wakeup();
     }
+
 }

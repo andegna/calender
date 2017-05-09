@@ -3,8 +3,9 @@
 namespace Andegna\PHPUnit\Exception;
 
 use Andegna\Exception\InvalidDateException;
+use PHPUnit\Framework\TestCase;
 
-class InvalidDateExceptionTest extends \PHPUnit_Framework_TestCase
+class InvalidDateExceptionTest extends TestCase
 {
     /**
      * @expectedException \Andegna\Exception\InvalidDateException

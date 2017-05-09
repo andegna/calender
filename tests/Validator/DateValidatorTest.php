@@ -3,8 +3,9 @@
 namespace Andegna\PHPUnit\Validator;
 
 use Andegna\Validator\DateValidator;
+use PHPUnit\Framework\TestCase;
 
-class DateValidatorTest extends \PHPUnit_Framework_TestCase
+class DateValidatorTest extends TestCase
 {
     public function dateDataProvider()
     {
@@ -71,6 +72,11 @@ class DateValidatorTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @dataProvider dateDataProvider
+     *
+     * @param $month
+     * @param $day
+     * @param $year
+     * @param $expected
      */
     public function test_is_valid($month, $day, $year, $expected)
     {
@@ -78,4 +84,5 @@ class DateValidatorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, $validator->isValid());
     }
+
 }

@@ -3,8 +3,9 @@
 namespace Andegna\PHPUnit\Validator;
 
 use Andegna\Validator\LeapYearValidator;
+use PHPUnit\Framework\TestCase;
 
-class LeapYearValidatorTest extends \PHPUnit_Framework_TestCase
+class LeapYearValidatorTest extends TestCase
 {
     public function yearDateProvider()
     {
