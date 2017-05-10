@@ -4,9 +4,15 @@ namespace Andegna\Operations;
 
 use Andegna\Converter\Converter;
 use Andegna\Converter\FromJdnConverter;
+use Andegna\DateTime;
 use Andegna\Validator\LeapYearValidator;
-use DateTime as BaseDateTime;
+use DateTime as GregorianDateTime;
 
+/**
+ * Class Initiator
+ *
+ * @package Andegna\Operations
+ */
 trait Initiator
 {
     /**
@@ -29,11 +35,11 @@ trait Initiator
     /**
      * Return the JDN of the given gregorian date time.
      *
-     * @param BaseDateTime $dateTime
+     * @param GregorianDateTime $dateTime
      *
      * @return int
      */
-    protected function getJdnFromBase(BaseDateTime $dateTime)
+    protected function getJdnFromBase(GregorianDateTime $dateTime)
     {
         $year = $dateTime->format('Y');
         $month = $dateTime->format('m');

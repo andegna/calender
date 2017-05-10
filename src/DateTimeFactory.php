@@ -2,37 +2,45 @@
 
 namespace Andegna;
 
+use DateTime as GregorianDateTime;
 use Andegna\Converter\ToJdnConverter;
-use Andegna\Validator\LeapYearValidator;
-use DateTime as BaseDateTime;
 use DateTimeZone;
 
+/**
+ * Class DateTimeFactory
+ *
+ * A factory to create @see \Andegna\DateTime
+ *
+ * @package Andegna
+ */
 class DateTimeFactory
 {
+
     /**
-     * Create a date time representing now.
+     * Create a @see \Andegna\DateTime representing now.
      *
-     * @param DateTimeZone|null $dateTimeZone
+     * @param DateTimeZone|null $dateTimeZone the timezone
      *
-     * @return DateTime
+     * @return DateTime the datetime u wanted
      */
     public static function now(DateTimeZone $dateTimeZone = null)
     {
-        $dateTimeZone = self::defaultDateTimeZone($dateTimeZone);
+        $dateTimeZone = self::checkForDateTimeZone($dateTimeZone);
 
         return new DateTime(
-            new BaseDateTime('now', $dateTimeZone)
+            new GregorianDateTime('now', $dateTimeZone)
         );
     }
 
     /**
-     * @param $dateTimeZone
+     * @param DateTimeZone|null $dateTimeZone the timezone
      *
-     * @return DateTimeZone
+     * @return DateTimeZone a valid timezone
      */
-    protected static function defaultDateTimeZone($dateTimeZone)
+    protected static function checkForDateTimeZone(DateTimeZone $dateTimeZone = null)
     {
         if (is_null($dateTimeZone)) {
+            // get the default timezone from z system
             return new DateTimeZone(date_default_timezone_get());
         }
 
@@ -41,52 +49,54 @@ class DateTimeFactory
 
 
     /**
-     * Create a DateTime of year month day ...
+     * Create a @see \Andegna\DateTime of year month day ...
      *
-     * @param int               $year
-     * @param int               $month
-     * @param int               $day
-     * @param int               $hour
-     * @param int               $minute
-     * @param int               $second
-     * @param DateTimeZone|null $dateTimeZone
+     * @param int               $year         ethiopian year
+     * @param int               $month        ethiopian month
+     * @param int               $day          ethiopian day
+     * @param int               $hour         hour
+     * @param int               $minute       minute
+     * @param int               $second       second
+     * @param DateTimeZone|null $dateTimeZone the timezone
      *
-     * @return DateTime
+     * @return DateTime the datetime u wanted
      */
-    public static function of(
-        $year,
-        $month,
-        $day,
-        $hour = 0,
-        $minute = 0,
-        $second = 0,
+    public static function of($year, $month, $day,
+        $hour = 0, $minute = 0, $second = 0,
         DateTimeZone $dateTimeZone = null
     ) {
 
-        // Convert to Julian Date Number
+
+        // Convert to JDN
         $jdn = (new ToJdnConverter($day, $month, $year))->getJdn();
 
         // The gregorian date in "month/day/year" format
-        $gregorian = \jdtogregorian($jdn);
+        $gregorian = jdtogregorian($jdn);
 
-        $dateTimeZone = self::defaultDateTimeZone($dateTimeZone);
+        $dateTimeZone = self::checkForDateTimeZone($dateTimeZone);
 
-        $base = new BaseDateTime("$gregorian $hour:$minute:$second",
-            $dateTimeZone);
+        $base = new GregorianDateTime(
+            "$gregorian $hour:$minute:$second",
+            $dateTimeZone
+        );
 
         return new DateTime($base);
     }
 
     /**
-     * @param $timestamp
+     * @param int               $timestamp    timestamp like @see time()
+     * @param DateTimeZone|null $dateTimeZone the timezone
      *
-     * @return DateTime
+     * @return DateTime the datetime u wanted
      */
-    public static function fromTimestamp($timestamp)
+    public static function fromTimestamp($timestamp, DateTimeZone $dateTimeZone = null)
     {
-        $baseDateTime = new BaseDateTime(date('c', $timestamp));
+        $base = new GregorianDateTime(
+            date('Y-m-d H:i:s', $timestamp),
+            self::checkForDateTimeZone($dateTimeZone)
+        );
 
-        return new DateTime($baseDateTime);
+        return new DateTime($base);
     }
 
 }

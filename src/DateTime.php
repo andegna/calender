@@ -2,10 +2,12 @@
 
 namespace Andegna;
 
-use DateTime as BaseDateTime;
+use DateTime as GregorianDateTime;
 
 /**
- * Ethiopian DateTime class.
+ * Ethiopian Andegna DateTime class.
+ *
+ * @package Andegna
  */
 class DateTime
 {
@@ -16,7 +18,7 @@ class DateTime
     /**
      * The Gregorian Date
      *
-     * @var BaseDateTime
+     * @var GregorianDateTime
      */
     protected $dateTime;
 
@@ -40,7 +42,9 @@ class DateTime
     protected $daysInMonth;
 
     /**
-     * @return int
+     * Returns the Ethiopian Year
+     *
+     * @return int year
      */
     public function getYear()
     {
@@ -48,7 +52,9 @@ class DateTime
     }
 
     /**
-     * @return int
+     * Returns the Ethiopian Month
+     *
+     * @return int month
      */
     public function getMonth()
     {
@@ -56,7 +62,9 @@ class DateTime
     }
 
     /**
-     * @return int
+     * Returns the Ethiopian Day
+     *
+     * @return int day
      */
     public function getDay()
     {
@@ -64,7 +72,9 @@ class DateTime
     }
 
     /**
-     * @return bool
+     * Returns true if the Year is a leap
+     *
+     * @return bool leap year
      */
     public function isLeapYear()
     {
@@ -72,7 +82,14 @@ class DateTime
     }
 
     /**
-     * @return int
+     * Returns the day Of the Year
+     *
+     * Day of the year is the number of days(inclusive)
+     * have passed since the new year
+     *
+     * Eg. 'ኅዳር 29' day of the year is 89
+     *
+     * @return int day Of the Year
      */
     public function getDayOfYear()
     {
@@ -80,7 +97,11 @@ class DateTime
     }
 
     /**
-     * @return int
+     * Returns number of days in the given year
+     *
+     * It's 30 except 'ጳጉሜን'
+     *
+     * @return int days in the month
      */
     public function getDaysInMonth()
     {
@@ -88,63 +109,78 @@ class DateTime
     }
 
     /**
-     * @return int
+     * Returns the Hour
+     *
+     * @return int hour
      */
     public function getHour()
     {
-        return intval($this->dateTime->format('G'));
+        return (int)$this->dateTime->format('G');
     }
 
     /**
-     * @return int
+     * Returns the Minute
+     *
+     * @return int minute
      */
     public function getMinute()
     {
-        return intval($this->dateTime->format('i'));
+        return (int)$this->dateTime->format('i');
     }
 
     /**
-     * @return int
+     * Returns the Second
+     *
+     * @return int second
      */
     public function getSecond()
     {
-        return intval($this->dateTime->format('s'));
+        return (int) $this->dateTime->format('s');
     }
 
     /**
-     * @return int
+     * Returns the Micro
+     *
+     * @return int micro
      */
     public function getMicro()
     {
-        return intval($this->dateTime->format('u'));
+        return (int) $this->dateTime->format('u');
     }
 
 
     /**
-     * @return int
+     * Returns the Day of the week
+     *
+     * 1 (for ሰኞ) through 7 (for እሑድ)
+     *
+     * @return int day of the week
      */
     public function getDayOfWeek()
     {
-        return intval($this->dateTime->format('N'));
+        return (int) $this->dateTime->format('N');
     }
 
     /**
-     * @return int
+     * Returns the Timestamp
+     *
+     * @see    time()
+     * @return int timestamp
      */
     public function getTimestamp()
     {
-        return intval($this->dateTime->format('U'));
+        return (int) $this->dateTime->format('U');
     }
 
     /**
      * DateTime constructor.
      *
-     * @param BaseDateTime|null $dateTime
+     * @param GregorianDateTime|null $dateTime
      */
-    public function __construct(BaseDateTime $dateTime = null)
+    public function __construct(GregorianDateTime $dateTime = null)
     {
         if (null === $dateTime) {
-            $this->dateTime = new BaseDateTime('now');
+            $this->dateTime = new GregorianDateTime('now');
         } else {
             $this->dateTime = $dateTime;
         }
@@ -153,9 +189,9 @@ class DateTime
     }
 
     /**
-     * Return the <b>clone</b> of the base gregorian date time.
+     * Return the <b>clone</b> of the base gregorian datetime.
      *
-     * @return BaseDateTime
+     * @return GregorianDateTime
      */
     public function toGregorian()
     {

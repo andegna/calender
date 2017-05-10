@@ -2,17 +2,31 @@
 
 namespace Andegna\Validator;
 
+/**
+ * Ethiopian Leap Year Validator
+ *
+ * @package Andegna\Validator
+ */
 class LeapYearValidator implements Validator
 {
     use ValidIntegerValidator;
 
-    private $year;
+    /** @var  int */
+    protected $year;
 
+    /**
+     * Leap Year Validator constructor.
+     *
+     * @param $year int the year
+     */
     public function __construct($year)
     {
         $this->year = $year;
     }
 
+    /**
+     * @return bool true if valid
+     */
     public function isValid()
     {
         return
@@ -20,8 +34,14 @@ class LeapYearValidator implements Validator
             $this->isValidLeapYear($this->year);
     }
 
+    /**
+     * @param $year int
+     *
+     * @return bool true if valid
+     */
     protected function isValidLeapYear($year)
     {
         return ($year + 1) % 4 === 0;
     }
+
 }

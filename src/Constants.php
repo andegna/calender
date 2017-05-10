@@ -3,7 +3,9 @@
 namespace Andegna;
 
 /**
- * Interface Constants.
+ * Ethiopian Date Constants.
+ *
+ * @package Andegna
  */
 class Constants
 {

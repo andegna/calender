@@ -2,6 +2,11 @@
 
 namespace Andegna\Validator;
 
+/**
+ * Ethiopian DateValidator
+ *
+ * @package Andegna\Validator
+ */
 class DateValidator implements Validator
 {
     use ValidIntegerValidator;
@@ -18,12 +23,22 @@ class DateValidator implements Validator
 
     const PAGUME_LEAP_YEAR_LAST_DAY = 6;
 
-    private $day;
+    /** @var int */
+    protected $day;
 
-    private $month;
+    /** @var int */
+    protected $month;
 
-    private $year;
+    /** @var int */
+    protected $year;
 
+    /**
+     * DateValidator constructor.
+     *
+     * @param $day int
+     * @param $month int
+     * @param $year int
+     */
     public function __construct($day, $month, $year)
     {
         $this->day = $day;
@@ -31,6 +46,11 @@ class DateValidator implements Validator
         $this->year = $year;
     }
 
+    /**
+     * validate the ethiopian date
+     *
+     * @return bool true if valid
+     */
     public function isValid()
     {
         return
@@ -45,18 +65,34 @@ class DateValidator implements Validator
             $this->isValidLeapDay($this->day, $this->month, $this->year);
     }
 
+    /**
+     * @param $day int
+     *
+     * @return bool
+     */
     protected function isValidDayRange($day)
     {
         return $day >= self::FIRST_DAY &&
-        $day <= self::LAST_DAY;
+            $day <= self::LAST_DAY;
     }
 
+    /**
+     * @param $month int
+     *
+     * @return bool
+     */
     protected function isValidMonthRange($month)
     {
         return $month >= self::FIRST_MONTH &&
-        $month <= self::LAST_MONTH;
+            $month <= self::LAST_MONTH;
     }
 
+    /**
+     * @param $day int
+     * @param $month int
+     *
+     * @return bool
+     */
     protected function isValidPagumeDayRange($day, $month)
     {
         if ($month === self::LAST_MONTH) {
@@ -66,10 +102,17 @@ class DateValidator implements Validator
         return true;
     }
 
+    /**
+     * @param $day
+     * @param $month
+     * @param $year
+     *
+     * @return bool
+     */
     protected function isValidLeapDay($day, $month, $year)
     {
-        if ($month === self::LAST_MONTH &&
-            $day === self::PAGUME_LEAP_YEAR_LAST_DAY
+        if ($month === self::LAST_MONTH 
+            && $day === self::PAGUME_LEAP_YEAR_LAST_DAY
         ) {
             return (new LeapYearValidator($year))->isValid();
         }

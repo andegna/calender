@@ -127,6 +127,11 @@ trait Formatter
         return $this->isLeapYear() ? '1' : '0';
     }
 
+    /**
+     * returns 97 for the year 1997
+     *
+     * @return string
+     */
     public function getYearShort()
     {
         $Y = $this->getValueOfFormatCharacter('Y');
@@ -189,16 +194,31 @@ trait Formatter
         return $array[$this->getHour()];
     }
 
+    /**
+     * 1 (for 'ልደታ'), 2 (for አባ፡ጉባ), ... 30 (for ማርቆስ)
+     *
+     * @return string the ethiopian orthodox day name
+     */
     public function getOrthodoxDay()
     {
         return Constants::ORTHODOX_DAY_NAME[$this->getDay()];
     }
 
+    /**
+     * ዓ/ም or ዓ/ዓ
+     *
+     * @return string
+     */
     public function getTextualEra()
     {
         return $this->getYear() > 0 ? 'ዓ/ም' : 'ዓ/ዓ';
     }
 
+    /**
+     * ማቴዎስ, ማርቆስ, ሉቃስ or ዮሐንስ
+     *
+     * @return string the ethiopian orthodox year name
+     */
     public function getOrthodoxYear()
     {
         return Constants::ORTHODOX_YEAR_NAME[$this->getYear() % 4];
