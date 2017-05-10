@@ -3,6 +3,7 @@
 namespace Andegna\Operations;
 
 use Andegna\Constants;
+use Geezify\Geezify;
 
 /**
  * class DateFormatter.
@@ -222,6 +223,26 @@ trait Formatter
     public function getOrthodoxYear()
     {
         return Constants::ORTHODOX_YEAR_NAME[$this->getYear() % 4];
+    }
+
+    /**
+     * Return the year in geez number
+     *
+     * @return string
+     */
+    public function getYearInGeez()
+    {
+        return Geezify::create()->toGeez($this->getYear());
+    }
+
+    /**
+     * Return the day in geez number
+     *
+     * @return string
+     */
+    public function getDayInGeez()
+    {
+        return Geezify::create()->toGeez($this->getDay());
     }
 
 }

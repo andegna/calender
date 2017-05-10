@@ -9,42 +9,45 @@ Andegna Calender
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
 [![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
 
-If you ever want to convert **Ethiopian Date** to any other calender system 
-like the Gregorian Calender this is the right package for you. 
-And it also support Date Time formatting and much much more. :
+If you ever want to convert **Ethiopian Calender** to any other calender system
+(like the Gregorian Calender) this is the right package for you. 
+
+And by the way it also support Amharic date formatting and much much more.
 
 Basic Usage
 -----------
-### Create Ethiopian DateTime Object
 
-- [Current Date Time2](#from-now)
-- [From Gregorian Date Time](#from-gregorian)
-- [From Ethiopian Day. Month, Year](#from-of)
-- [From Timestamp](#from-timestamp)
-
-#### Current Date Time
 ```php
-$now1 = new EthiopianDateTime();
-$now2 = DateTimeFactory::now();
+$gregorian = new DateTime('next sunday');
+
+$ethipic = new Andegna\DateTime($gregorian); // now
+
+echo $ethipic->format(Andegna\Constants::DATE_GEEZ_ORTHODOX);
+// Will output something like
+// እሑድ፣ ግንቦት ፮ ቀን (ኢያሱስ) 00:00:00 እኩለ፡ሌሊት EAT ፳፻፱ (ማርቆስ) ዓ/ም
 ```
 
-#### From Gregorian Date Time
-```php
-$gregorian = new DateTime('next month');
-$dateTime1 = new EthiopianDateTime($gregorian);
-```
+Installation
+------------
 
-// From Ethiopian Day. Month, Year
-$birthDay = DateTimeFactory::of(1986, 3, 21);
-$millennium = DateTimeFactory::of(2000, 1, 1);
-$ginbot20 = DateTimeFactory::of(1983, 9, 20);
 
-// From the unix timestamp
-$timestamp = time();
+Conversion
+----------
 
-$now3 = DateTimeFactory::fromTimestamp($timestamp);
-```
-Contributing <p id="from-now" name="from-now"></p>
+
+Manipulation
+------------
+
+
+Formatting
+----------
+
+
+Holidays
+--------
+
+
+Contributing
 ------------
     Fork it
     Create your feature branch (git checkout -b my-new-feature)

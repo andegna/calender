@@ -10,8 +10,10 @@ namespace Andegna;
 class Constants
 {
     const DATE_ETHIOPIAN = 'l፣ F d ቀን H:i:s a T Y E';
-
     const DATE_ETHIOPIAN_ORTHODOX = 'l፣ F d ቀን (x) H:i:s a T Y (X) E';
+
+    const DATE_GEEZ = 'l፣ F V ቀን H:i:s a T K E';
+    const DATE_GEEZ_ORTHODOX = 'l፣ F V ቀን (x) H:i:s a T K (X) E';
 
     const MONTHS_NAME = [
         1 => 'መስከረም', 'ጥቅምት', 'ኅዳር', 'ታኅሣሥ', 'ጥር', 'የካቲት',
@@ -55,6 +57,9 @@ class Constants
         'x' => 'getOrthodoxDay',                //  ልደታ - ማርቆስ
         'X' => 'getOrthodoxYear',               //  ማቴዎስ - ዮሐንስ
         'E' => 'getTextualEra',                 //  ዓ/ዓ, ዓ/ም
+
+        'K' => 'getYearInGeez',                 //  ፳፻፱
+        'V' => 'getDayInGeez',                  //  ፪
     ];
 
 }
