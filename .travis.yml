@@ -8,6 +8,6 @@ php:
 install: travis_retry composer install --no-interaction --prefer-source
 
 script:
-  vendor/bin/phpunit --coverage-clover=coverage.clover
-  wget https://scrutinizer-ci.com/ocular.phar
-  php ocular.phar code-coverage:upload --access-token="your-token" --format=php-clover coverage.clover
+  - vendor/bin/phpunit --coverage-clover=coverage.clover
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
