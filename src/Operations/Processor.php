@@ -2,29 +2,28 @@
 
 namespace Andegna\Operations;
 
-use DateTimeZone;
-use DateInterval;
-use Andegna\DateTime;
-use DateTime as GregorianDateTime;
 use Andegna\Converter\ToJdnConverter;
+use Andegna\DateTime;
+use DateInterval;
+use DateTime as GregorianDateTime;
+use DateTimeZone;
 
 /**
  * Processor trait <br />
- * works on dateTime property
- *
- * @package Andegna\Operations
+ * works on dateTime property.
  */
 trait Processor
 {
-
     /**
      * @param GregorianDateTime $dateTime
+     *
      * @return DateTime
      */
     protected function fixForChaining(GregorianDateTime $dateTime)
     {
         if ($dateTime !== null) {
             $this->updateComputedFields();
+
             return $this;
         }
 
@@ -32,9 +31,10 @@ trait Processor
     }
 
     /**
-     * Adds an amount of days, months, years, hours, minutes and seconds to a DateTime object
+     * Adds an amount of days, months, years, hours, minutes and seconds to a DateTime object.
      *
-     * @param  DateInterval $interval
+     * @param DateInterval $interval
+     *
      * @return DateTime|bool
      */
     public function add(DateInterval $interval)
@@ -43,9 +43,10 @@ trait Processor
     }
 
     /**
-     * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object
+     * Subtracts an amount of days, months, years, hours, minutes and seconds from a DateTime object.
      *
-     * @param  DateInterval $interval
+     * @param DateInterval $interval
+     *
      * @return DateTime|bool
      */
     public function sub(DateInterval $interval)
@@ -54,9 +55,10 @@ trait Processor
     }
 
     /**
-     * Alters the timestamp
+     * Alters the timestamp.
      *
      * @param  $modify
+     *
      * @return DateTime|bool
      */
     public function modify($modify)
@@ -65,10 +67,11 @@ trait Processor
     }
 
     /**
-     * Returns the difference between two DateTime objects
+     * Returns the difference between two DateTime objects.
      *
      * @param  $datetime
-     * @param  bool     $absolute
+     * @param bool $absolute
+     *
      * @return DateInterval
      */
     public function diff($datetime, $absolute = false)
@@ -81,7 +84,7 @@ trait Processor
     }
 
     /**
-     * Sets the date
+     * Sets the date.
      *
      * @param $year
      * @param $month
@@ -97,15 +100,15 @@ trait Processor
 
         list($month, $day, $year) = explode('/', $gregorian);
 
-        $this->fixForChaining($this->dateTime->setDate((int)$year, (int)$month, (int)$day));
+        $this->fixForChaining($this->dateTime->setDate((int) $year, (int) $month, (int) $day));
     }
 
     /**
-     * Sets the time
+     * Sets the time.
      *
      * @param $hour
      * @param $minute
-     * @param int    $second
+     * @param int $second
      *
      * @return DateTime
      */
@@ -115,7 +118,7 @@ trait Processor
     }
 
     /**
-     * Sets the date and time based on an Unix timestamp
+     * Sets the date and time based on an Unix timestamp.
      *
      * @param $unixtimestamp
      *
@@ -127,7 +130,7 @@ trait Processor
     }
 
     /**
-     * Sets the time zone for the DateTime object
+     * Sets the time zone for the DateTime object.
      *
      * @param $timezone
      *
@@ -139,7 +142,7 @@ trait Processor
     }
 
     /**
-     * Returns the timezone offset
+     * Returns the timezone offset.
      *
      * @return int
      */
@@ -149,7 +152,7 @@ trait Processor
     }
 
     /**
-     * Return time zone relative to given DateTime
+     * Return time zone relative to given DateTime.
      *
      * @return DateTimeZone
      */
@@ -159,11 +162,10 @@ trait Processor
     }
 
     /**
-     * The __wakeup handler
+     * The __wakeup handler.
      */
     public function __wakeup()
     {
         return $this->dateTime->__wakeup();
     }
-
 }

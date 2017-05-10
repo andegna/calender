@@ -5,12 +5,10 @@ namespace Andegna\Converter;
 use Andegna\Validator\ValidIntegerValidator;
 
 /**
- * Converter abstraction
+ * Converter abstraction.
  *
  * @see FromJdnConverter
  * @see ToJdnConverter
- *
- * @package Andegna\Converter
  */
 abstract class Converter
 {
@@ -29,7 +27,7 @@ abstract class Converter
     protected $jdn;
 
     /**
-     * Get the day
+     * Get the day.
      *
      * @return int
      */
@@ -39,7 +37,7 @@ abstract class Converter
     }
 
     /**
-     * Get the month
+     * Get the month.
      *
      * @return int
      */
@@ -49,7 +47,7 @@ abstract class Converter
     }
 
     /**
-     * Get the year
+     * Get the year.
      *
      * @return int
      */
@@ -59,7 +57,7 @@ abstract class Converter
     }
 
     /**
-     * Get the JDN
+     * Get the JDN.
      *
      * @return int
      */
@@ -67,5 +65,4 @@ abstract class Converter
     {
         return $this->jdn;
     }
-
 }

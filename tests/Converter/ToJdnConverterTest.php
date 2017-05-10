@@ -34,5 +34,4 @@ class ToJdnConverterTest extends ConverterTest
 
         $this->assertEquals($jdn, $converter->getJdn());
     }
-
 }

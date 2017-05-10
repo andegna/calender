@@ -2,20 +2,17 @@
 
 namespace Andegna;
 
-use DateTime as GregorianDateTime;
 use Andegna\Converter\ToJdnConverter;
+use DateTime as GregorianDateTime;
 use DateTimeZone;
 
 /**
- * Class DateTimeFactory
+ * Class DateTimeFactory.
  *
  * A factory to create @see \Andegna\DateTime
- *
- * @package Andegna
  */
 class DateTimeFactory
 {
-
     /**
      * Create a @see \Andegna\DateTime representing now.
      *
@@ -47,7 +44,6 @@ class DateTimeFactory
         return $dateTimeZone;
     }
 
-
     /**
      * Create a @see \Andegna\DateTime of year month day ...
      *
@@ -65,7 +61,6 @@ class DateTimeFactory
         $hour = 0, $minute = 0, $second = 0,
         DateTimeZone $dateTimeZone = null
     ) {
-
 
         // Convert to JDN
         $jdn = (new ToJdnConverter($day, $month, $year))->getJdn();
@@ -98,5 +93,4 @@ class DateTimeFactory
 
         return new DateTime($base);
     }
-
 }

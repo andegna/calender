@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 class DateTimeTest extends TestCase
 {
-    /** @var  DateTime */
+    /** @var DateTime */
     protected $dateTime;
 
     protected function setUp()
@@ -57,5 +57,4 @@ class DateTimeTest extends TestCase
 //            $this->assertEquals($this->dateTime->{$function}(), $this->dateTime->format($format));
 //        }
 //    }
-
 }

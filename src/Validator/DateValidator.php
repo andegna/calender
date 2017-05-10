@@ -3,9 +3,7 @@
 namespace Andegna\Validator;
 
 /**
- * Ethiopian DateValidator
- *
- * @package Andegna\Validator
+ * Ethiopian DateValidator.
  */
 class DateValidator implements Validator
 {
@@ -47,7 +45,7 @@ class DateValidator implements Validator
     }
 
     /**
-     * validate the ethiopian date
+     * validate the ethiopian date.
      *
      * @return bool true if valid
      */
@@ -111,7 +109,7 @@ class DateValidator implements Validator
      */
     protected function isValidLeapDay($day, $month, $year)
     {
-        if ($month === self::LAST_MONTH 
+        if ($month === self::LAST_MONTH
             && $day === self::PAGUME_LEAP_YEAR_LAST_DAY
         ) {
             return (new LeapYearValidator($year))->isValid();

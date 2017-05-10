@@ -6,7 +6,6 @@ use Andegna\Converter\FromJdnConverter;
 
 class FromJdnConverterTest extends ConverterTest
 {
-
     /**
      * @dataProvider invalidJDNDataProvider
      *

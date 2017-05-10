@@ -7,18 +7,16 @@ use Andegna\DateTimeFactory;
 use DateTimeZone;
 
 /**
- * Ethiopian Easter
- *
- * @package Andegna\Holiday
+ * Ethiopian Easter.
  */
 class Easter
 {
     /** @var DateTimeZone */
     private $dateTimeZone;
 
-
     /**
      * Easter constructor.
+     *
      * @param DateTimeZone $dateTimeZone
      */
     public function __construct(DateTimeZone $dateTimeZone)
@@ -27,7 +25,7 @@ class Easter
     }
 
     /**
-     * Get the easter date of a given Ethiopian year
+     * Get the easter date of a given Ethiopian year.
      *
      * @param $year int Ethiopian year
      *
@@ -35,7 +33,7 @@ class Easter
      */
     public function get($year)
     {
-        $julian_year = (int)DateTimeFactory::of($year, 8, 1)
+        $julian_year = (int) DateTimeFactory::of($year, 8, 1)
             ->toGregorian()->format('Y');
 
         $days_after = easter_days($julian_year, CAL_EASTER_ALWAYS_JULIAN);
@@ -49,5 +47,4 @@ class Easter
         return DateTimeFactory::of($con->getYear(), $con->getMonth(), $con->getDay(),
             0, 0, 0, $this->dateTimeZone);
     }
-
 }

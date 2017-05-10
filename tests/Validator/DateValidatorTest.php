@@ -84,5 +84,4 @@ class DateValidatorTest extends TestCase
 
         $this->assertEquals($expected, $validator->isValid());
     }
-
 }

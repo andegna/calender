@@ -4,8 +4,6 @@ namespace Andegna;
 
 /**
  * Ethiopian Date Constants.
- *
- * @package Andegna
  */
 class Constants
 {
@@ -17,7 +15,7 @@ class Constants
 
     const MONTHS_NAME = [
         1 => 'መስከረም', 'ጥቅምት', 'ኅዳር', 'ታኅሣሥ', 'ጥር', 'የካቲት',
-        'መጋቢት', 'ሚያዝያ', 'ግንቦት', 'ሰኔ', 'ሐምሌ', 'ነሐሴ', 'ጳጉሜን'];
+        'መጋቢት', 'ሚያዝያ', 'ግንቦት', 'ሰኔ', 'ሐምሌ', 'ነሐሴ', 'ጳጉሜን', ];
 
     const WEEK_NAME = [1 => 'ሰኞ', 'ማክሰኞ', 'ረቡዕ', 'ሓሙስ', 'ዓርብ', 'ቅዳሜ', 'እሑድ'];
 
@@ -61,5 +59,4 @@ class Constants
         'K' => 'getYearInGeez',                 //  ፳፻፱
         'V' => 'getDayInGeez',                  //  ፪
     ];
-
 }

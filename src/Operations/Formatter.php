@@ -44,14 +44,14 @@ trait Formatter
     protected function getValueOfFormatCharacter($name)
     {
         if (array_key_exists($name, Constants::FORMAT_MAPPER)) {
-            return '' . $this->{Constants::FORMAT_MAPPER[$name]}();
+            return ''.$this->{Constants::FORMAT_MAPPER[$name]}();
         }
 
         return $this->dateTime->format($name);
     }
 
     /**
-     * (01-30) Day of the month, 2 digits with leading zeros
+     * (01-30) Day of the month, 2 digits with leading zeros.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ trait Formatter
     }
 
     /**
-     * (ሰኞ-እሑድ) A full textual representation of the day of the week
+     * (ሰኞ-እሑድ) A full textual representation of the day of the week.
      *
      * return string
      */
@@ -73,7 +73,7 @@ trait Formatter
     }
 
     /**
-     * (ሰኞ-እሑ) A textual representation of a day, two letters
+     * (ሰኞ-እሑ) A textual representation of a day, two letters.
      *
      * return string
      */
@@ -85,7 +85,7 @@ trait Formatter
     }
 
     /**
-     * (መስከረም-ጳጉሜን) A full textual representation of a month
+     * (መስከረም-ጳጉሜን) A full textual representation of a month.
      *
      * @return string
      */
@@ -95,7 +95,7 @@ trait Formatter
     }
 
     /**
-     * (መስ - ጳጉ) A short textual representation of a month, two letters
+     * (መስ - ጳጉ) A short textual representation of a month, two letters.
      *
      * @return string
      */
@@ -107,7 +107,7 @@ trait Formatter
     }
 
     /**
-     * (01-13) Numeric representation of a month, with leading zeros
+     * (01-13) Numeric representation of a month, with leading zeros.
      *
      * @return string
      */
@@ -119,7 +119,7 @@ trait Formatter
     }
 
     /**
-     * (1 or 0) Whether it's a leap year
+     * (1 or 0) Whether it's a leap year.
      *
      * @return string
      */
@@ -129,7 +129,7 @@ trait Formatter
     }
 
     /**
-     * returns 97 for the year 1997
+     * returns 97 for the year 1997.
      *
      * @return string
      */
@@ -157,12 +157,11 @@ trait Formatter
     {
         $array = [
             23 => 'እኩለ፡ሌሊት',
-            0 => 'እኩለ፡ሌሊት',
+            0  => 'እኩለ፡ሌሊት',
 
             1 => 'ውደቀት',
             2 => 'ውደቀት',
             3 => 'ውደቀት',
-
 
             4 => 'ንጋት',
             5 => 'ንጋት',
@@ -171,7 +170,7 @@ trait Formatter
             7 => 'ጡዋት',
             8 => 'ጡዋት',
 
-            9 => 'ረፋድ',
+            9  => 'ረፋድ',
             10 => 'ረፋድ',
             11 => 'ረፋድ',
 
@@ -196,7 +195,7 @@ trait Formatter
     }
 
     /**
-     * 1 (for 'ልደታ'), 2 (for አባ፡ጉባ), ... 30 (for ማርቆስ)
+     * 1 (for 'ልደታ'), 2 (for አባ፡ጉባ), ... 30 (for ማርቆስ).
      *
      * @return string the ethiopian orthodox day name
      */
@@ -206,7 +205,7 @@ trait Formatter
     }
 
     /**
-     * ዓ/ም or ዓ/ዓ
+     * ዓ/ም or ዓ/ዓ.
      *
      * @return string
      */
@@ -216,7 +215,7 @@ trait Formatter
     }
 
     /**
-     * ማቴዎስ, ማርቆስ, ሉቃስ or ዮሐንስ
+     * ማቴዎስ, ማርቆስ, ሉቃስ or ዮሐንስ.
      *
      * @return string the ethiopian orthodox year name
      */
@@ -226,7 +225,7 @@ trait Formatter
     }
 
     /**
-     * Return the year in geez number
+     * Return the year in geez number.
      *
      * @return string
      */
@@ -236,7 +235,7 @@ trait Formatter
     }
 
     /**
-     * Return the day in geez number
+     * Return the day in geez number.
      *
      * @return string
      */
@@ -244,5 +243,4 @@ trait Formatter
     {
         return Geezify::create()->toGeez($this->getDay());
     }
-
 }

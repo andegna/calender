@@ -3,17 +3,15 @@
  * Created by PhpStorm.
  * User: stark
  * Date: 5/9/17
- * Time: 2:42 PM
+ * Time: 2:42 PM.
  */
 
 namespace Andegna\PHPUnit\Converter;
-
 
 use PHPUnit\Framework\TestCase;
 
 abstract class ConverterTest extends TestCase
 {
-
     public function invalidJDNDataProvider()
     {
         return [
@@ -103,5 +101,4 @@ abstract class ConverterTest extends TestCase
             [13, 6, 2006, false],
         ];
     }
-
 }

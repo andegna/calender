@@ -3,14 +3,13 @@
 namespace Andegna\Validator;
 
 /**
- * Class ValidIntegerValidator
- *
- * @package Andegna\Validator
+ * Class ValidIntegerValidator.
  */
 trait ValidIntegerValidator
 {
     /**
      * @internal ... args of values
+     *
      * @return bool
      */
     public function isValidInteger()

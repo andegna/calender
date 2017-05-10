@@ -9,9 +9,7 @@ use Andegna\Validator\LeapYearValidator;
 use DateTime as GregorianDateTime;
 
 /**
- * Class Initiator
- *
- * @package Andegna\Operations
+ * Class Initiator.
  */
 trait Initiator
 {
@@ -63,7 +61,7 @@ trait Initiator
     }
 
     /**
-     * Set the timestamp field
+     * Set the timestamp field.
      */
     protected function cacheTimestamp()
     {
@@ -128,5 +126,4 @@ trait Initiator
     {
         $this->dayOfWeek = intval($this->dateTime->format('N'));
     }
-
 }

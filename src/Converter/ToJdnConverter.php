@@ -6,13 +6,10 @@ use Andegna\Exception\InvalidDateException;
 use Andegna\Validator\DateValidator as DateValidator;
 
 /**
- * ToJdnConverter
- *
- * @package Andegna\Converter
+ * ToJdnConverter.
  */
 class ToJdnConverter extends Converter
 {
-
     /**
      * ToJdnConverter constructor.
      *
@@ -32,8 +29,9 @@ class ToJdnConverter extends Converter
      * @param $month
      * @param $year
      *
-     * @return $this
      * @throws \Andegna\Exception\InvalidDateException
+     *
+     * @return $this
      */
     public function set($day, $month, $year)
     {
@@ -47,7 +45,7 @@ class ToJdnConverter extends Converter
         $this->month = $month;
         $this->year = $year;
 
-        $this->jdn = (int)static::process($day, $month, $year);
+        $this->jdn = (int) static::process($day, $month, $year);
 
         return $this;
     }
@@ -64,7 +62,7 @@ class ToJdnConverter extends Converter
         return
             (1723856 + 365) +
             365 * ($year - 1) +
-            (int)($year / 4) +
+            (int) ($year / 4) +
             30 * $month +
             $day - 31;
     }

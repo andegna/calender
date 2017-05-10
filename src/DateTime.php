@@ -6,8 +6,6 @@ use DateTime as GregorianDateTime;
 
 /**
  * Ethiopian Andegna DateTime class.
- *
- * @package Andegna
  */
 class DateTime
 {
@@ -16,12 +14,11 @@ class DateTime
         Operations\Formatter;
 
     /**
-     * The Gregorian Date
+     * The Gregorian Date.
      *
      * @var GregorianDateTime
      */
     protected $dateTime;
-
 
     /** @var int */
     protected $year;
@@ -42,7 +39,7 @@ class DateTime
     protected $daysInMonth;
 
     /**
-     * Returns the Ethiopian Year
+     * Returns the Ethiopian Year.
      *
      * @return int year
      */
@@ -52,7 +49,7 @@ class DateTime
     }
 
     /**
-     * Returns the Ethiopian Month
+     * Returns the Ethiopian Month.
      *
      * @return int month
      */
@@ -62,7 +59,7 @@ class DateTime
     }
 
     /**
-     * Returns the Ethiopian Day
+     * Returns the Ethiopian Day.
      *
      * @return int day
      */
@@ -72,7 +69,7 @@ class DateTime
     }
 
     /**
-     * Returns true if the Year is a leap
+     * Returns true if the Year is a leap.
      *
      * @return bool leap year
      */
@@ -82,7 +79,7 @@ class DateTime
     }
 
     /**
-     * Returns the day Of the Year
+     * Returns the day Of the Year.
      *
      * Day of the year is the number of days(inclusive)
      * have passed since the new year
@@ -97,7 +94,7 @@ class DateTime
     }
 
     /**
-     * Returns number of days in the given year
+     * Returns number of days in the given year.
      *
      * It's 30 except 'ጳጉሜን'
      *
@@ -109,27 +106,27 @@ class DateTime
     }
 
     /**
-     * Returns the Hour
+     * Returns the Hour.
      *
      * @return int hour
      */
     public function getHour()
     {
-        return (int)$this->dateTime->format('G');
+        return (int) $this->dateTime->format('G');
     }
 
     /**
-     * Returns the Minute
+     * Returns the Minute.
      *
      * @return int minute
      */
     public function getMinute()
     {
-        return (int)$this->dateTime->format('i');
+        return (int) $this->dateTime->format('i');
     }
 
     /**
-     * Returns the Second
+     * Returns the Second.
      *
      * @return int second
      */
@@ -139,7 +136,7 @@ class DateTime
     }
 
     /**
-     * Returns the Micro
+     * Returns the Micro.
      *
      * @return int micro
      */
@@ -148,9 +145,8 @@ class DateTime
         return (int) $this->dateTime->format('u');
     }
 
-
     /**
-     * Returns the Day of the week
+     * Returns the Day of the week.
      *
      * 1 (for ሰኞ) through 7 (for እሑድ)
      *
@@ -162,9 +158,10 @@ class DateTime
     }
 
     /**
-     * Returns the Timestamp
+     * Returns the Timestamp.
      *
      * @see    time()
+     *
      * @return int timestamp
      */
     public function getTimestamp()
@@ -197,5 +194,4 @@ class DateTime
     {
         return clone $this->dateTime;
     }
-
 }

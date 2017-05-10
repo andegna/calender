@@ -5,11 +5,10 @@ namespace Andegna\Exception;
 use Exception;
 
 /**
- * Invalid Date Exception
+ * Invalid Date Exception.
  */
 class InvalidDateException extends Exception
 {
-
     /**
      * InvalidDateException constructor.
      *
@@ -19,5 +18,4 @@ class InvalidDateException extends Exception
     {
         parent::__construct($message);
     }
-
 }

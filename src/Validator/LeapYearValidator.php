@@ -3,15 +3,13 @@
 namespace Andegna\Validator;
 
 /**
- * Ethiopian Leap Year Validator
- *
- * @package Andegna\Validator
+ * Ethiopian Leap Year Validator.
  */
 class LeapYearValidator implements Validator
 {
     use ValidIntegerValidator;
 
-    /** @var  int */
+    /** @var int */
     protected $year;
 
     /**
@@ -43,5 +41,4 @@ class LeapYearValidator implements Validator
     {
         return ($year + 1) % 4 === 0;
     }
-
 }
