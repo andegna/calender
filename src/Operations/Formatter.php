@@ -170,13 +170,11 @@ trait Formatter
 
         $hour = $this->getHour();
 
-        $filter = function ($value) use ($hour) {
-            return !!array_search($hour, $value);
-        };
+        $result = array_filter($array, function ($value) use ($hour) {
+            return false !== array_search($hour, $value, true);
+        });
 
-        var_dump((array_filter($array, $filter)));
-
-        return current(array_filter($array, $filter));
+        return key($result);
     }
 
     /**

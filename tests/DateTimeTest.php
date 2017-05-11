@@ -41,7 +41,7 @@ class DateTimeTest extends TestCase
         $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት EAT 1986 ዓ/ም',
             $this->dateTime->format(Constants::DATE_ETHIOPIAN));
 
-        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 እኩለ፡ሌሊት EAT 1988 (ማቴዎስ) ዓ/ም',
+        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 ጡዋት EAT 1988 (ማቴዎስ) ዓ/ም',
             $this->otherDateTime->format(Constants::DATE_ETHIOPIAN_ORTHODOX));
 
         $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 EAT',
