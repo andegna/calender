@@ -12,6 +12,9 @@ class DateTimeTest extends TestCase
     /** @var DateTime */
     protected $dateTime;
 
+    /** @var DateTime */
+    protected $otherDateTime;
+
     protected function setUp()
     {
         parent::setUp();
@@ -19,6 +22,7 @@ class DateTimeTest extends TestCase
         date_default_timezone_set('Africa/Addis_Ababa');
 
         $this->dateTime = DateTimeFactory::of(1986, 3, 21);
+        $this->otherDateTime = new DateTime($this->dateTime->toGregorian()->add(new \DateInterval('P2Y4DT6H8M')));
     }
 
     public function test_my_birth_day()
@@ -37,8 +41,8 @@ class DateTimeTest extends TestCase
         $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት EAT 1986 ዓ/ም',
             $this->dateTime->format(Constants::DATE_ETHIOPIAN));
 
-        $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን (ማርያም) 00:00:00 እኩለ፡ሌሊት EAT 1986 (ሉቃስ) ዓ/ም',
-            $this->dateTime->format(Constants::DATE_ETHIOPIAN_ORTHODOX));
+        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 እኩለ፡ሌሊት EAT 1988 (ማቴዎስ) ዓ/ም',
+            $this->otherDateTime->format(Constants::DATE_ETHIOPIAN_ORTHODOX));
 
         $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 EAT',
             $this->dateTime->format(DATE_COOKIE));
