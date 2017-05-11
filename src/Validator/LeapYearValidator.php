@@ -5,7 +5,7 @@ namespace Andegna\Validator;
 /**
  * Ethiopian Leap Year Validator.
  */
-class LeapYearValidator implements Validator
+class LeapYearValidator implements ValidatorInterface
 {
     use ValidIntegerValidator;
 

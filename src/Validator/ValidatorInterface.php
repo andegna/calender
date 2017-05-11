@@ -5,7 +5,7 @@ namespace Andegna\Validator;
 /**
  * Interface Validator.
  */
-interface Validator
+interface ValidatorInterface
 {
     public function isValid();
 }

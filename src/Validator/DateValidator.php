@@ -5,7 +5,7 @@ namespace Andegna\Validator;
 /**
  * Ethiopian DateValidator.
  */
-class DateValidator implements Validator
+class DateValidator implements ValidatorInterface
 {
     use ValidIntegerValidator;
 
