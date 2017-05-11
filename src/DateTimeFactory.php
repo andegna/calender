@@ -96,9 +96,10 @@ class DateTimeFactory
     }
 
     /**
-     * Just for convenience
+     * Just for convenience.
      *
-     * @param  GregorianDateTime $gregorian
+     * @param GregorianDateTime $gregorian
+     *
      * @return DateTime the datetime u wanted
      */
     public static function fromDateTime(GregorianDateTime $gregorian)
@@ -107,10 +108,11 @@ class DateTimeFactory
     }
 
     /**
-     * Just for convenience
+     * Just for convenience.
      *
-     * @param  Converter         $con
-     * @param  DateTimeZone|null $dateTimeZone
+     * @param Converter         $con
+     * @param DateTimeZone|null $dateTimeZone
+     *
      * @return DateTime the datetime u wanted
      */
     public static function fromConverter(Converter $con, DateTimeZone $dateTimeZone = null)
@@ -120,5 +122,4 @@ class DateTimeFactory
             0, 0, 0, $dateTimeZone
         );
     }
-
 }

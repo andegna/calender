@@ -44,7 +44,7 @@ trait Formatter
     protected function getValueOfFormatCharacter($name)
     {
         if (array_key_exists($name, Constants::FORMAT_MAPPER)) {
-            return '' . $this->{Constants::FORMAT_MAPPER[$name]}();
+            return ''.$this->{Constants::FORMAT_MAPPER[$name]}();
         }
 
         return $this->dateTime->format($name);
@@ -156,16 +156,16 @@ trait Formatter
     public function getTimeOfDay()
     {
         $array = [
-            'እኩለ፡ሌሊት' => [23, 0],
-            'ውደቀት' => [1, 2, 3],
-            'ንጋት' => [4, 5],
-            'ጡዋት' => [6, 7, 8],
-            'ረፋድ' => [9, 10, 11],
-            'እኩለ፡ቀን' => [12],
+            'እኩለ፡ሌሊት'  => [23, 0],
+            'ውደቀት'     => [1, 2, 3],
+            'ንጋት'      => [4, 5],
+            'ጡዋት'      => [6, 7, 8],
+            'ረፋድ'      => [9, 10, 11],
+            'እኩለ፡ቀን'   => [12],
             'ከሰዓት፡በኋላ' => [13, 14, 15],
-            'ወደማታ' => [16, 17],
-            'ሲደነግዝ' => [18, 19],
-            'ምሽት' => [20, 21, 22],
+            'ወደማታ'     => [16, 17],
+            'ሲደነግዝ'    => [18, 19],
+            'ምሽት'      => [20, 21, 22],
         ];
 
         $hour = $this->getHour();
