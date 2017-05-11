@@ -51,70 +51,69 @@ class DateValidator implements Validator
      */
     public function isValid()
     {
-        return
-            $this->isValidInteger($this->day, $this->month, $this->year) &&
+        $validators = [
+            'isDateValuesIntegers',
+            'isValidDayRange',
+            'isValidMonthRange',
+            'isValidPagumeDayRange',
+            'isValidLeapDay',
+        ];
 
-            $this->isValidDayRange($this->day) &&
-
-            $this->isValidMonthRange($this->month) &&
-
-            $this->isValidPagumeDayRange($this->day, $this->month) &&
-
-            $this->isValidLeapDay($this->day, $this->month, $this->year);
+        return array_reduce($validators, function ($result, $validator) {
+            return $result && $this->{$validator}();
+        }, true);
     }
 
     /**
-     * @param $day int
-     *
      * @return bool
      */
-    protected function isValidDayRange($day)
+    protected function isValidDayRange()
     {
-        return $day >= self::FIRST_DAY &&
-            $day <= self::LAST_DAY;
+        return $this->day >= self::FIRST_DAY &&
+            $this->day <= self::LAST_DAY;
     }
 
     /**
-     * @param $month int
-     *
      * @return bool
      */
-    protected function isValidMonthRange($month)
+    protected function isValidMonthRange()
     {
-        return $month >= self::FIRST_MONTH &&
-            $month <= self::LAST_MONTH;
+        return $this->month >= self::FIRST_MONTH &&
+            $this->month <= self::LAST_MONTH;
     }
 
     /**
-     * @param $day int
-     * @param $month int
-     *
      * @return bool
      */
-    protected function isValidPagumeDayRange($day, $month)
+    protected function isValidPagumeDayRange()
     {
-        if ($month === self::LAST_MONTH) {
-            return $day <= self::PAGUME_LEAP_YEAR_LAST_DAY;
+        if ($this->month === self::LAST_MONTH) {
+            return $this->day <= self::PAGUME_LEAP_YEAR_LAST_DAY;
         }
 
         return true;
     }
 
     /**
-     * @param $day
-     * @param $month
-     * @param $year
-     *
      * @return bool
      */
-    protected function isValidLeapDay($day, $month, $year)
+    protected function isValidLeapDay()
     {
-        if ($month === self::LAST_MONTH
-            && $day === self::PAGUME_LEAP_YEAR_LAST_DAY
+        if ($this->month === self::LAST_MONTH &&
+            $this->day === self::PAGUME_LEAP_YEAR_LAST_DAY
         ) {
-            return (new LeapYearValidator($year))->isValid();
+            return (new LeapYearValidator($this->year))->isValid();
         }
 
         return true;
     }
+
+    /**
+     * @return bool
+     */
+    protected function isDateValuesIntegers()
+    {
+        return $this->isValidInteger($this->day, $this->month, $this->year);
+    }
+
 }
