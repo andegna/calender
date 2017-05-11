@@ -2,6 +2,7 @@
 
 namespace Andegna;
 
+use Andegna\Converter\Converter;
 use Andegna\Converter\ToJdnConverter;
 use DateTime as GregorianDateTime;
 use DateTimeZone;
@@ -93,4 +94,31 @@ class DateTimeFactory
 
         return new DateTime($base);
     }
+
+    /**
+     * Just for convenience
+     *
+     * @param  GregorianDateTime $gregorian
+     * @return DateTime the datetime u wanted
+     */
+    public static function fromDateTime(GregorianDateTime $gregorian)
+    {
+        return new DateTime($gregorian);
+    }
+
+    /**
+     * Just for convenience
+     *
+     * @param  Converter         $con
+     * @param  DateTimeZone|null $dateTimeZone
+     * @return DateTime the datetime u wanted
+     */
+    public static function fromConverter(Converter $con, DateTimeZone $dateTimeZone = null)
+    {
+        return static::of(
+            $con->getYear(), $con->getMonth(), $con->getDay(),
+            0, 0, 0, $dateTimeZone
+        );
+    }
+
 }
