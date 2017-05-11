@@ -115,5 +115,4 @@ class DateValidator implements Validator
     {
         return $this->isValidInteger($this->day, $this->month, $this->year);
     }
-
 }
