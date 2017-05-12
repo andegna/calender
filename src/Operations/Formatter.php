@@ -26,12 +26,26 @@ trait Formatter
         $result = '';
         $length = \mb_strlen($format);
 
+        $skip_next = false;
+
         // iterate for each character
         for ($index = 0; $index < $length; $index++) {
-            $result .= $this->getValueOfFormatCharacter(mb_substr($format, $index, 1));
+            $format_char = mb_substr($format, $index, 1);
+
+            if ($format_char === "\\") {
+                $skip_next = true;
+                continue;
+            } else if ($skip_next) {
+                $skip_next = false;
+                $result .= $format_char;
+                continue;
+            }
+
+            $result .= $this->getValueOfFormatCharacter($format_char);
         }
 
-        return $result;
+        // remove null bits if they exist
+        return str_replace("\0", '', $result);
     }
 
     /**
@@ -44,7 +58,7 @@ trait Formatter
     protected function getValueOfFormatCharacter($name)
     {
         if (array_key_exists($name, Constants::FORMAT_MAPPER)) {
-            return ''.$this->{Constants::FORMAT_MAPPER[$name]}();
+            return '' . $this->{Constants::FORMAT_MAPPER[$name]}();
         }
 
         return $this->dateTime->format($name);
@@ -156,16 +170,16 @@ trait Formatter
     public function getTimeOfDay()
     {
         $array = [
-            'እኩለ፡ሌሊት'  => [23, 0],
-            'ውደቀት'     => [1, 2, 3],
-            'ንጋት'      => [4, 5],
-            'ጡዋት'      => [6, 7, 8],
-            'ረፋድ'      => [9, 10, 11],
-            'እኩለ፡ቀን'   => [12],
+            'እኩለ፡ሌሊት' => [23, 0],
+            'ውደቀት' => [1, 2, 3],
+            'ንጋት' => [4, 5],
+            'ጡዋት' => [6, 7, 8],
+            'ረፋድ' => [9, 10, 11],
+            'እኩለ፡ቀን' => [12],
             'ከሰዓት፡በኋላ' => [13, 14, 15],
-            'ወደማታ'     => [16, 17],
-            'ሲደነግዝ'    => [18, 19],
-            'ምሽት'      => [20, 21, 22],
+            'ወደማታ' => [16, 17],
+            'ሲደነግዝ' => [18, 19],
+            'ምሽት' => [20, 21, 22],
         ];
 
         $hour = $this->getHour();

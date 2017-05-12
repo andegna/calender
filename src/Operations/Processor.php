@@ -21,13 +21,9 @@ trait Processor
      */
     protected function fixForChaining(GregorianDateTime $dateTime)
     {
-        if ($dateTime !== null) {
-            $this->updateComputedFields();
+        $this->updateComputedFields();
 
-            return $this;
-        }
-
-        return false;
+        return $this;
     }
 
     /**

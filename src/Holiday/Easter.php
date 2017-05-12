@@ -19,7 +19,7 @@ class Easter
      *
      * @param DateTimeZone $dateTimeZone
      */
-    public function __construct(DateTimeZone $dateTimeZone)
+    public function __construct(DateTimeZone $dateTimeZone = null)
     {
         $this->dateTimeZone = $dateTimeZone;
     }
