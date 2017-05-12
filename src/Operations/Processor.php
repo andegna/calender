@@ -15,12 +15,13 @@ use DateTimeZone;
 trait Processor
 {
     /**
-     * @param GregorianDateTime $dateTime
+     * @param mixed $dateTime
      *
-     * @return DateTime
+     * @return mixed
      */
-    protected function fixForChaining(GregorianDateTime $dateTime)
+    protected function fixForChaining($dateTime = false)
     {
+        if($dateTime === false) return $dateTime;
         $this->updateComputedFields();
 
         return $this;
