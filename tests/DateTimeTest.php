@@ -16,7 +16,7 @@ class DateTimeTest extends TestCase
     /** @var DateTime */
     protected $otherDateTime;
 
-    /** @var  DateTime */
+    /** @var DateTime */
     protected $yetAnotherDateTime;
 
     protected function setUp()
@@ -165,11 +165,10 @@ class DateTimeTest extends TestCase
             $ethiopian = $date;
             $gregorian = $ethiopian->toGregorian();
 
-            $this->assertEquals($ethiopian->getHour(), (int)$gregorian->format('H'));
-            $this->assertEquals($ethiopian->getMinute(), (int)$gregorian->format('i'));
-            $this->assertEquals($ethiopian->getSecond(), (int)$gregorian->format('s'));
-            $this->assertEquals($ethiopian->getMicro(), (int)$gregorian->format('u'));
+            $this->assertEquals($ethiopian->getHour(), (int) $gregorian->format('H'));
+            $this->assertEquals($ethiopian->getMinute(), (int) $gregorian->format('i'));
+            $this->assertEquals($ethiopian->getSecond(), (int) $gregorian->format('s'));
+            $this->assertEquals($ethiopian->getMicro(), (int) $gregorian->format('u'));
         }
     }
-
 }

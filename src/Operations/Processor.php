@@ -5,7 +5,6 @@ namespace Andegna\Operations;
 use Andegna\Converter\ToJdnConverter;
 use Andegna\DateTime;
 use DateInterval;
-use DateTime as GregorianDateTime;
 use DateTimeZone;
 
 /**
@@ -21,7 +20,9 @@ trait Processor
      */
     protected function fixForChaining($dateTime = false)
     {
-        if($dateTime === false) return $dateTime;
+        if ($dateTime === false) {
+            return $dateTime;
+        }
         $this->updateComputedFields();
 
         return $this;

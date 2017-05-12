@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: stark
  * Date: 5/12/17
- * Time: 7:42 AM
+ * Time: 7:42 AM.
  */
 
 namespace Andegna\PHPUnit\Holiday;
@@ -27,9 +27,10 @@ class EasterTest extends TestCase
     }
 
     /**
-     * Eastern Orthodox churches easter dates
+     * Eastern Orthodox churches easter dates.
      *
      * @link https://en.wikipedia.org/wiki/Computus
+     *
      * @return array
      */
     public function easterDatesDataProvider()
@@ -75,7 +76,7 @@ class EasterTest extends TestCase
             [2034, 'April 9'],
             [2035, 'April 29'],
             [2036, 'April 20'],
-            [2037, 'April 5']
+            [2037, 'April 5'],
         ];
     }
 
