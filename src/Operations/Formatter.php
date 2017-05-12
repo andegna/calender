@@ -180,7 +180,7 @@ trait Formatter
 
         $hour = $this->getHour();
 
-        $result = array_filter($array, function($value) use ($hour) {
+        $result = array_filter($array, function ($value) use ($hour) {
             return false !== array_search($hour, $value, true);
         });
 
@@ -249,7 +249,7 @@ trait Formatter
 
     /**
      * @param string $name
-     * @param boolean $skip
+     * @param bool   $skip
      *
      * @return string|false
      */
