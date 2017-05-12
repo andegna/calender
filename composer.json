@@ -1,7 +1,7 @@
 {
 	"name": "andegna/calender",
 	"type": "library",
-	"description": "everything you need to deal with an Ethiopian calender.",
+	"description": "If you ever want to convert Ethiopian Calender to any other calender system (like the Gregorian Calender) this is the right package for you. And by the way it also support Amharic date formatting and much much more.",
 	"keywords": ["ethiopian", "date", "calender", "JDN"],
 	"license": "MIT",
 	"support": {
@@ -30,7 +30,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"develope": "2.0-dev"
+			"develope": "2.1-dev"
 		}
 	}
 }
