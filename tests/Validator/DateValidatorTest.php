@@ -1,17 +1,13 @@
 <?php
 
-namespace Andegna\PHPUnit;
+namespace Andegna\PHPUnit\Validator;
 
-use Andegna\Calender;
+use Andegna\Validator\DateValidator;
+use PHPUnit\Framework\TestCase;
 
-class EthiopicCheckDateTest extends \PHPUnit_Framework_TestCase
+class DateValidatorTest extends TestCase
 {
-    public function testMethodExists()
-    {
-        $this->assertTrue(method_exists('\Andegna\Calender', 'ethiopianCheckDate'));
-    }
-
-    public function methodDataProvider()
+    public function dateDataProvider()
     {
         return [
             // invalid argument
@@ -75,10 +71,17 @@ class EthiopicCheckDateTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @dataProvider methodDataProvider
+     * @dataProvider dateDataProvider
+     *
+     * @param $month
+     * @param $day
+     * @param $year
+     * @param $expected
      */
-    public function testMethod($month, $day, $year, $expected)
+    public function test_is_valid($month, $day, $year, $expected)
     {
-        $this->assertEquals($expected, Calender::ethiopianCheckDate($month, $day, $year));
+        $validator = new DateValidator($day, $month, $year);
+
+        $this->assertEquals($expected, $validator->isValid());
     }
 }
