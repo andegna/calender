@@ -11,7 +11,6 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
-
 > If you ever want to convert **Ethiopian Calender** to any other calender system
 > (like the Gregorian Calender) this is the right (well tested && well designed) package for you.
 >
@@ -21,6 +20,7 @@
 - [Requirement](#requirement)
 - [Installation](#installation)
 - [Conversion](#conversion)
+    - [From Ethiopian Date](#from-Ethiopian-Date)
     - [From Timestamp](#from-timestamp)
     - [From DateTime object](#from-dateTime-object)
     - [From date string](#from-date-string)
@@ -30,15 +30,16 @@
 	- [How PHP calender conversion works](#how-php-calender-conversion-works)
 	- [From JDN](#from-jdn)
 	- [To JDN](#to-jdn)
+	- [Practical Example](#practical-example)
 - [Manipulation](#manipulation)
 	- [Warning](#warning)
 	- [Manipulating the internal date time](#manipulating-the-internal-date-time)
 - [Formatting](#formatting)
 	- [Introduction](#introduction)
-	- [Custom character formats](#custom-character-formats)
+	- [Additional character formats](#additional-character-formats)
 	- [Constants](#constants)
 - [Holidays](#holidays)
-	- [Eastern](#eastern)
+	- [Easter](#easter)
 - [Validators](#validators)
 - [Available methods](#available-methods)
 	- [Manipulation methods](#manipulation-methods)
@@ -125,6 +126,31 @@ So `Andegna\DateTime` keep hold of the gregorian date and overides the `format`,
 
 That's how it basically works.
 
+<a name="from-Ethiopian-Date"></a>
+### From Ethiopian Date
+
+You can create an `Andegna\DateTime` from a given Ethiopia Date.
+
+Let's "create"
+
+```php
+$millennium = Andegna\DateTimeFactory::of(2000, 1, 1);
+
+// ረቡዕ፣ መስከረም 01 ቀን (ልደታ) 00:00:00 እኩለ፡ሌሊት EAT 2000 (ማቴዎስ) ዓ/ም
+echo $millennium->format(\Andegna\Constants::DATE_ETHIOPIAN_ORTHODOX).PHP_EOL;
+
+// Wednesday, 12-Sep-2007 00:00:00 EAT
+echo $millennium->toGregorian()->format(DATE_COOKIE).PHP_EOL;
+
+$fall_of_derg = Andegna\DateTimeFactory::of(1983, 9, 20, 7, 43, 21, new DateTimeZone('Africa/Addis_Ababa'));
+
+// ማክሰኞ፣ ግንቦት 20 ቀን (ሕንፅተ) 07:43:21 ጡዋት EAT 1983 (ዮሐንስ) ዓ/ም
+echo $fall_of_derg->format(\Andegna\Constants::DATE_ETHIOPIAN_ORTHODOX).PHP_EOL;
+
+// Tuesday, 28-May-1991 07:43:21 EAT
+echo $fall_of_derg->toGregorian()->format(DATE_COOKIE).PHP_EOL;
+```
+
 <a name="from-timestamp"></a>
 ### From Timestamp
 
@@ -142,16 +168,16 @@ And you are done. You can also or pass a `DateTimeZone` object if you want too
 ```php
 $sheger = new DateTimeZone('Africa/Addis_Ababa');
 
-$ethiopic = \Andegna\DateTimeFactory::fromTimestamp($timestamp, $sheger);
+$ethiopic = Andegna\DateTimeFactory::fromTimestamp($timestamp, $sheger);
 ```
 
 <a name="from-dateTime-object"></a>
 ### From DateTime object
 
-If you already have a DateTime object, just give it to me :smile:
+If you already have a `DateTime` object, just give it to me :smile:
 
 ```php
-$gregorian = new DateTime('now');
+$gregorian = new DateTime('Thu, 11 May 2017 19:01:26 GMT');
 $ethiopic = Andegna\DateTimeFactory::fromDateTime($gregorian);
 
 // or just pass it through the constractor
@@ -180,20 +206,21 @@ $now3 = \Andegna\DateTimeFactory::now($sheger);
 
 This is not actually part of this package but some one probably having a hard time.
 
-It's generally boils down to two options. Do you know the format of the date or not.
+It's generally boils down to two options. Do you know the format of the date string or not.
 
-If you know the format of the date(you probably should) u can create a gregorian `DateTime`
+If you know the format of the date (you probably should) you can create a gregorian `DateTime`
 like this
 
 ```php
+// passing the format followed by the date string you got
 $gregorian1 = DateTime::createFromFormat('j-M-Y', '15-Feb-2009');
 $gregorian2 = DateTime::createFromFormat('m-j-Y', '12-31-1999');
 $gregorian3 = DateTime::createFromFormat('Y-m-d H:i:s', '2009-02-15 15:16:17');
 ```
 
-To figure out the format please check [this](http://php.net/manual/en/datetime.createfromformat.php) out.
+To figure out the format please check [this link](http://php.net/manual/en/datetime.createfromformat.php) or seach for "php date function".
 
-But if don't know the format is or don't care to check just try to pass it to the DateTime constractor.
+But if don't know the format is or don't care to figure it out just try to pass it to the DateTime constractor. It will "probably" figure out the format from the date string
 
 ```php
 $gregorian1 = new DateTime('next sunday');
@@ -207,13 +234,16 @@ $gregorian_bad = new DateTime('12-31-1999'); // this one probably fails
 <a name="to-datetime"></a>
 ### To DateTime
 
-If you want the internal DateTime object
+If you want the internal `DateTime` object (A.K.A convert to gregorian calender).
 
 ```php
+// create some Ethiopian date how ever you want
 $ethiopian_date = \Andegna\DateTimeFactory::now();
+
+// you get a PHP DateTime object to play with
 $gregorian = $now->toGregorian();
 ```
-> Warning: the returned DateTime object is just a clone. So changed to the returned object will not affect the $ethiopic date.
+> Warning: the returned DateTime object is just a clone. So changes/modification to the returned object will not affect the Ethiopic date.
 
 <a name="low-level-conversion"></a>
 ## Low level Conversion
@@ -232,7 +262,7 @@ Astronomy, Maths and History.
 
 Those words are straight from the [php docs](http://php.net/manual/en/intro.calendar.php).
 
-So we need to implement two thing.
+So we need to implement two thing to convert Ethiopian date to any other other calender.
  1. Convert Ethiopian Date To Julian Date Count
  2. Convert Julian Date Count To Ethiopian Date
 
@@ -264,6 +294,73 @@ $converter = new ToJdnConverter(21,3,1986);
 echo $jdn = $converter->getJdn();  // 2449322
 ```
 
+<a name="practical-example"></a>
+### Practical Example
+
+Now with those handy tools in our hand we can convert Ethiopian date to any other date.
+
+Let's convert to Jewish for example
+
+```php
+$et = new Andegna\DateTime();
+
+// ዓርብ, 04-ግን-2009 14:41:00 EAT
+echo $et->format(DATE_COOKIE);
+
+// create a Ethiopian Date `ToJdnConverter`
+$converter = new Andegna\Converter\ToJdnConverter($et->getDay(), $et->getMonth(), $et->getYear());
+
+// convert it to jdn
+$jdn = $converter->getJdn();
+
+// use the built-in php function to convert the jdn to the jewish calender 
+$jewish_date1 = jdtojewish($jdn);
+
+// 9/16/5777
+echo $jewish_date1;
+
+// it also support formating for the return string
+$jewish_date2 = jdtojewish($jdn, true,     CAL_JEWISH_ADD_ALAFIM_GERESH);
+
+// convert the return string to utf-8
+$jewish_date2 = iconv ('WINDOWS-1255', 'UTF-8', $jewish_date2); 
+
+// טז אייר ה'תשעז
+echo $jewish_date2;
+```
+
+Let's convert Julian Calender to Ethiopian Calender as a second example
+
+```php
+$day = 29;
+$month = 4;
+$year = 2017;
+
+// get the jdn using the built in php function
+$jdn = juliantojd($month, $day, $year);
+
+// convert the jd to Ethiopian Date
+$converter = new Andegna\Converter\FromJdnConverter($jdn);
+
+// create a `Andegna\DateTime` from the converted date
+$ethiopic = Andegna\DateTimeFactory::fromConverter($converter);
+
+// ዓርብ, 04-ግን-2009 00:00:00 EAT
+echo $ethiopic->format(DATE_COOKIE);
+
+// Friday, 12-May-2017 00:00:00 EAT
+echo $ethiopic->toGregorian()->format(DATE_COOKIE);
+```
+
+#### List of supported calenders built into PHP
+- French Republican Calendar
+- Gregorian Calendar
+- Jewish calendar
+- Julian Calendar
+- Unix (I know what you are thinking. It's not a calender but it handy)
+
+Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calender function
+
 <a name="manipulation"></a>
 ## Manipulation
 
@@ -277,9 +374,30 @@ echo $jdn = $converter->getJdn();  // 2449322
 
 You probably need to read about [DateTimeInterval](http://php.net/manual/en/class.dateinterval.php) if you don't already know.
 
+To give you a short summury, `DateInterval` implements the [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) durations.
+
+Durations are a component of time intervals and define the amount of intervening time in a time interval.
+Durations are represented by the format **`P[n]Y[n]M[n]DT[n]H[n]M[n]S`** or **`P[n]W`**. 
+
+In these representations, the [n] is replaced by the value for each of the date and time elements that follow the [n]. 
+
+Leading zeros are not required. The capital letters P, Y, M, W, D, T, H, M, and S are designators for each of the date and time elements and are not replaced.
+
+- **P** is the duration designator (for period) placed at the start of the duration representation.
+- **Y** is the year designator that follows the value for the number of years.
+- **M** is the month designator that follows the value for the number of months.
+- **W** is the week designator that follows the value for the number of weeks.
+- **D** is the day designator that follows the value for the number of days.
+- **T** is the time designator that precedes the time components of the representation.
+- **H** is the hour designator that follows the value for the number of hours.
+- **M** is the minute designator that follows the value for the number of minutes.
+- **S** is the second designator that follows the value for the number of seconds.
+
+> For example, **"P3Y6M4DT12H30M5S"** represents a duration of "three years, six months, four days, twelve hours, thirty minutes, and five seconds".
+
 ```php
 // let's start from today
-$today = new \Andegna\DateTime();
+$today = new Andegna\DateTime();
 
 // Adds an amount of days, months, years, hours, minutes and seconds to a DateTime object
 $tomorrow = $today->add(new DateInterval('P1D'));
@@ -301,8 +419,8 @@ $after_30_minutes = $today->modify('next sunday');
 If you want to get the difference between dates
 
 ```php
-$today = new \Andegna\DateTime();
-$tomorrow = (new \Andegna\DateTime())->add(new DateInterval('P1DT2M3S'));
+$today = new Andegna\DateTime();
+$tomorrow = (new Andegna\DateTime())->add(new DateInterval('P1DT2M3S'));
 
 $diff = $today->diff($tomorrow); // returns a DateTimeInterval
 var_dump($diff);
@@ -321,8 +439,6 @@ object(DateInterval)[9]
 <a name="formatting"></a>
 ## Formatting
 
-Formatting (A.K.A "the cool part")
-
 <a name="introduction"></a>
 ### Introduction
 
@@ -335,8 +451,9 @@ PHP built-in `DateTime` class has a `format` method used to format dates.
 If you read or already know how php date function works, you already know how exactly the formatting works.
 
 ```php
-$now = new \Andegna\DateTime();
+$now = new Andegna\DateTime();
 
+// Let's play a game. It's called "Spot the difference"
 echo $now->format(DATE_COOKIE);   				// ዓርብ, 04-ግን-2009 02:09:52 EAT
 echo $now->toGregorian()->format(DATE_COOKIE);	// Friday, 12-May-2017 02:09:52 EAT
 
@@ -349,8 +466,8 @@ echo $now->toGregorian()->format('F j ቀን Y'); 	// May 12 ቀን 2017
 echo $now->format('H:i:s A');               	// 10:09:17 ረፋድ
 echo $now->toGregorian()->format('H:i:s A');	// 10:09:17 AM
 ```
-<a name="custom-character-formats"></a>
-### Custom character formats
+<a name="additional-character-formats"></a>
+### Additional character formats
 
 | Format Character | Description   	| Example |
 | ---------------- | ------------- 	| ------- |
@@ -367,26 +484,76 @@ echo $now->toGregorian()->format('H:i:s A');	// 10:09:17 AM
 We have already defined some handy constants to print as it's custom in Ethiopia :heart: .
 
 ```php
-$date = new \Andegna\DateTime();
+$date = new Andegna\DateTime();
 
 // ዓርብ፣ ግንቦት 04 ቀን 02:35:45 ውደቀት EAT 2009 ዓ/ም
-echo $date->format(\Andegna\Constants::DATE_ETHIOPIAN);
+echo $date->format(Andegna\Constants::DATE_ETHIOPIAN);
 
 $date->modify('+8 hours');
 
 // ዓርብ፣ ግንቦት 04 ቀን (ዮሐንስ) 10:35:45 ረፋድ EAT 2009 (ማርቆስ) ዓ/ም
-echo $date->format(\Andegna\Constants::DATE_ETHIOPIAN_ORTHODOX);
+echo $date->format(Andegna\Constants::DATE_ETHIOPIAN_ORTHODOX);
 
 $date->modify('+1 year');
 
 // ቅዳሜ፣ ግንቦት ፬ ቀን 10:35:45 ረፋድ EAT ፳፻፲ ዓ/ም
-echo $date->format(\Andegna\Constants::DATE_GEEZ);
+echo $date->format(Andegna\Constants::DATE_GEEZ);
 
 $date->modify('-3 years')->modify('+1 day');
 
 // ረቡዕ፣ ግንቦት ፭ ቀን (አቦ) 10:35:45 ረፋድ EAT ፳፻፯ (ዮሐንስ) ዓ/ም
-echo $date->format(\Andegna\Constants::DATE_GEEZ_ORTHODOX);
+echo $date->format(Andegna\Constants::DATE_GEEZ_ORTHODOX);
 ```
+
+As you saw 3D, the constants all start with `DATE_` and followed by `ETHIOPIAN` or `GEEZ`.
+
+The one followed by `GEEZ` will return the day and the year in geez and the `ETHIOPIAN` with spit an ascii numbers which we Ethiopian always use.
+
+Lastly if you append `_ORTHODOX` you will get the orthodox day name and orthodox year name.
+
+<a name="holidays"></a>
+## Holidays
+
+<a name="easter"></a>
+### Easter
+
+Calculating easter date feels like shooting a moving target. And everyone think calulating easter date is like imposible, some think like it's only possible if you are a deeply religious and some think it's deside by the church. But calculating easter date ( also called Computus) is not that much complex. 
+
+In simplest form Easter is the first Sunday following the full moon that follows the northern spring (vernal) equinox.
+
+That sounds complex and was hard for the ages but not for the 21th century.
+
+If you are interested in HOW it's calculated, i will post it on my upcomming blog.
+You can read [this](https://en.wikipedia.org/wiki/Computus) in the mean while.
+
+Let's see how you can get the easter date for a given year
+
+```php
+$easter = new Andegna\Holiday\Easter();
+
+// እሑድ፣ ሚያዝያ 08 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2009 ዓ/ም
+echo $easter->get(2009)->format(Andegna\Constants::DATE_ETHIOPIAN).PHP_EOL;
+
+// or just ...
+foreach ([2006,2007,2008,2009,2010,2011,2012] as $year) {
+    echo $easter->get($year)->format(Andegna\Constants::DATE_ETHIOPIAN).PHP_EOL;
+}
+```
+will output
+```
+እሑድ፣ ሚያዝያ 12 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2006 ዓ/ም
+እሑድ፣ ሚያዝያ 04 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2007 ዓ/ም
+እሑድ፣ ሚያዝያ 23 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2008 ዓ/ም
+እሑድ፣ ሚያዝያ 08 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2009 ዓ/ም
+እሑድ፣ መጋቢት 30 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2010 ዓ/ም
+እሑድ፣ ሚያዝያ 20 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2011 ዓ/ም
+እሑድ፣ ሚያዝያ 11 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2012 ዓ/ም
+```
+
+<a name="validators"></a>
+## Validators
+
+
 
 <a name="contributing"></a>
 ## Contributing
