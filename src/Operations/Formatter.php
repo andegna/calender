@@ -43,18 +43,18 @@ trait Formatter
      * Return the value of the format character.
      *
      * @param string $name of the field
+     * @param bool   $skip
      *
-     * @param bool $skip
      * @return string
      */
     protected function getValueOfFormatCharacter($name, &$skip = false)
     {
         if (($r = $this->shouldWeSkip($name, $skip)) !== false) {
-            return '' . $r;
+            return ''.$r;
         }
 
         if ($this->isOverrideFormatCharacter($name)) {
-            return '' . $this->{Constants::FORMAT_MAPPER[$name]}();
+            return ''.$this->{Constants::FORMAT_MAPPER[$name]}();
         }
 
         return $this->dateTime->format($name);
@@ -166,16 +166,16 @@ trait Formatter
     public function getTimeOfDay()
     {
         $array = [
-            'እኩለ፡ሌሊት' => [23, 0],
-            'ውደቀት' => [1, 2, 3],
-            'ንጋት' => [4, 5],
-            'ጡዋት' => [6, 7, 8],
-            'ረፋድ' => [9, 10, 11],
-            'እኩለ፡ቀን' => [12],
+            'እኩለ፡ሌሊት'  => [23, 0],
+            'ውደቀት'     => [1, 2, 3],
+            'ንጋት'      => [4, 5],
+            'ጡዋት'      => [6, 7, 8],
+            'ረፋድ'      => [9, 10, 11],
+            'እኩለ፡ቀን'   => [12],
             'ከሰዓት፡በኋላ' => [13, 14, 15],
-            'ወደማታ' => [16, 17],
-            'ሲደነግዝ' => [18, 19],
-            'ምሽት' => [20, 21, 22],
+            'ወደማታ'     => [16, 17],
+            'ሲደነግዝ'    => [18, 19],
+            'ምሽት'      => [20, 21, 22],
         ];
 
         $hour = $this->getHour();
@@ -239,6 +239,7 @@ trait Formatter
 
     /**
      * @param $name
+     *
      * @return bool
      */
     protected function isOverrideFormatCharacter($name)
@@ -264,6 +265,7 @@ trait Formatter
     /**
      * @param $name
      * @param $skip
+     *
      * @return bool
      */
     protected function shouldWeSkip4Real($name, &$skip)
@@ -273,14 +275,15 @@ trait Formatter
 
     /**
      * @param $name
-     *
      * @param $skip
+     *
      * @return string
      */
     protected function skipCharacter($name, &$skip)
     {
         if ($skip) {
             $skip = false;
+
             return $name;
         }
 
@@ -293,11 +296,11 @@ trait Formatter
 
     /**
      * @param $name
+     *
      * @return bool
      */
     protected function isSkipCharacter($name)
     {
-        return $name === "\\";
+        return $name === '\\';
     }
-
 }
