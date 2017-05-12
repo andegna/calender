@@ -32,16 +32,7 @@ trait Formatter
         for ($index = 0; $index < $length; $index++) {
             $format_char = mb_substr($format, $index, 1);
 
-            if ($format_char === "\\") {
-                $skip_next = true;
-                continue;
-            } else if ($skip_next) {
-                $skip_next = false;
-                $result .= $format_char;
-                continue;
-            }
-
-            $result .= $this->getValueOfFormatCharacter($format_char);
+            $result .= $this->getValueOfFormatCharacter($format_char, $skip_next);
         }
 
         // remove null bits if they exist
@@ -53,11 +44,16 @@ trait Formatter
      *
      * @param string $name of the field
      *
+     * @param bool $skip
      * @return string
      */
-    protected function getValueOfFormatCharacter($name)
+    protected function getValueOfFormatCharacter($name, &$skip = false)
     {
-        if (array_key_exists($name, Constants::FORMAT_MAPPER)) {
+        if (($r = $this->shouldWeSkip($name, $skip)) !== false) {
+            return '' . $r;
+        }
+
+        if ($this->isOverrideFormatCharacter($name)) {
             return '' . $this->{Constants::FORMAT_MAPPER[$name]}();
         }
 
@@ -240,4 +236,68 @@ trait Formatter
     {
         return Geezify::create()->toGeez($this->getDay());
     }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    protected function isOverrideFormatCharacter($name)
+    {
+        return array_key_exists($name, Constants::FORMAT_MAPPER);
+    }
+
+    /**
+     * @param $name
+     * @param $skip
+     *
+     * @return bool
+     */
+    protected function shouldWeSkip($name, &$skip)
+    {
+        if ($this->shouldWeSkip4Real($name, $skip)) {
+            return $this->skipCharacter($name, $skip);
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $name
+     * @param $skip
+     * @return bool
+     */
+    protected function shouldWeSkip4Real($name, &$skip)
+    {
+        return $this->isSkipCharacter($name) || $skip;
+    }
+
+    /**
+     * @param $name
+     *
+     * @param $skip
+     * @return string
+     */
+    protected function skipCharacter($name, &$skip)
+    {
+        if ($skip) {
+            $skip = false;
+            return $name;
+        }
+
+        if ($this->isSkipCharacter($name)) {
+            $skip = true;
+        }
+
+        return '';
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    protected function isSkipCharacter($name)
+    {
+        return $name === "\\";
+    }
+
 }
