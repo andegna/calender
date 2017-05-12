@@ -1,18 +1,21 @@
-# Andegna Calender
+# Andegna Calender ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
 
 [![Build Status](https://travis-ci.org/andegna/calender.svg?branch=master)](https://travis-ci.org/andegna/calender)
 [![StyleCI](https://styleci.io/repos/30183050/shield)](https://styleci.io/repos/30183050)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/andegna/calender/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
 [![Total Downloads](https://poser.pugx.org/andegna/calender/d/total.svg)](https://packagist.org/packages/andegna/calender)
 [![Latest Stable Version](https://poser.pugx.org/andegna/calender/v/stable.svg)](https://packagist.org/packages/andegna/calender)
 [![Latest Unstable Version](https://poser.pugx.org/andegna/calender/v/unstable.svg)](https://packagist.org/packages/andegna/calender)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
 [![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
+
 > If you ever want to convert **Ethiopian Calender** to any other calender system
-> (like the Gregorian Calender) this is the right package for you.
-> > And by the way it also support Amharic date formatting and much much more.
+> (like the Gregorian Calender) this is the right (well tested && well designed) package for you.
+>
+> And by the way it also support Amharic date formatting and much much more.
 
 - [Basic Usage](#basic-usage)
 - [Requirement](#requirement)
@@ -42,29 +45,68 @@
 	- [Getters](#getters)
 - [Contributing](#contributing)
 
-<a name="basic-usage"></a>
-## Basic Usage
+<a name="basic-usage"></a> 
+## Basic Usage :hammer:
+
+Just to give you the 10,000 foot view (:airplane:) of the package.
 
 ```php
-$gregorian = new DateTime('now');
+// create a gregorian date using PHP's built-in DateTime class
+$gregorian = new DateTime('next monday');
 
-$ethipic = new Andegna\DateTime($gregorian); // now
+// just pass it to Andegna\DateTime constractor and you will get $ethiopian date
+$ethipic = new Andegna\DateTime($gregorian);
+```
 
+Format it
+
+```php
+// format it
+// ሰኞ፣ ግንቦት ፯ ቀን (ሥላሴ) 00:00:00 እኩለ፡ሌሊት EAT ፳፻፱ (ማርቆስ) ዓ/ም
 echo $ethipic->format(Andegna\Constants::DATE_GEEZ_ORTHODOX);
-// Will output something like
-// እሑድ፣ ግንቦት ፮ ቀን (ኢያሱስ) 00:00:00 እኩለ፡ሌሊት EAT ፳፻፱ (ማርቆስ) ዓ/ም
+
+// ሰኞ፣ ግንቦት 07 ቀን 00:00:00 እኩለ፡ሌሊት EAT 2009 ዓ/ም
+echo $ethipic->format(Andegna\Constants::DATE_ETHIOPIAN);
+```
+
+Modify it
+
+```php
+$ethipic->modify('+8 hours');
+$ethipic->sub(new DateInterval('PT30M')); // 30 minutes
+
+// ሰኞ, 07-ግን-2009 07:30:00 EAT
+echo $ethipic->format(DATE_COOKIE);
+```
+
+Get what you want :wink:
+
+```php
+echo $ethipic->getYear();   // 2009
+echo $ethipic->getMonth();  // 9
+echo $ethipic->getDay();    // 7
+
+echo $ethipic->getTimestamp(); // 1494822600
+
+// turn it back to gregorian 
+// Monday, 15-May-2017 07:30:00 EAT
+echo $ethipic->toGregorian()->format(DATE_COOKIE);
 ```
 
 <a name="requirement"></a>
 ## Requirement
 
-Andegna Calender requires PHP `>= 5.6`
+Andegna Calender requires `php: >=5.6` with fire and blood :fire: :dragon:. 
 
 <a name="installation"></a>
 ## Installation
 
-Andegna Calender utilizes [Composer](https://getcomposer.org/) to manage its dependencies. 
+**Andegna Calender** utilizes [Composer](https://getcomposer.org/) to manage its dependencies. 
 So, before using this, make sure you have Composer installed on your machine.
+
+> Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
+
+If you never used composer before :flushed:, PLEASE read some [intro here](https://getcomposer.org/doc/00-intro.md) before you write any PHP code again.
 
 ```bash
 composer require andegna/calender
@@ -73,13 +115,13 @@ composer require andegna/calender
 <a name="conversion"></a>
 ## Conversion
 
-Before we talk about calender conversion we need to know how the `Andegna\DateTime` class works internally.
+Before we talk about calender conversion, we better know how the `Andegna\DateTime` class works internally.
 
 The `Andegna\DateTime` class is just a wrapper around php's built-in [`DateTime`](http://uk1.php.net/manual/en/class.datetime.php) 
 object and implements the php [`DateTimeInterface`](http://uk1.php.net/manual/en/class.datetimeinterface.php) 
-(i lied on some part but trust me u don't wanna know that :smile:).
+(OK! I lied on one part but trust me you don't wanna know that :smile:).
 
-So `Andegna\DateTime` keep hold of the gregorian date and overides the `format`, `getTimestamp` and more method when it's appropriet.
+So `Andegna\DateTime` keep hold of the gregorian date and overides the `format`, `getTimestamp`, `add`, 'diff' and such methods to give you an Ethiopian Calender equvalent.
 
 That's how it basically works.
 
@@ -87,15 +129,15 @@ That's how it basically works.
 ### From Timestamp
 
 Let's assume you have a timestamp from same where, probably `time()` function or from the some kind of database. 
+
 You can get `Andegna\DateTime` object like this
-
 ```php
-$timestamp = time();
+$timestamp = time(); // or some other place ¯\_(ツ)_/¯
 
-$ethiopic = \Andegna\DateTimeFactory::fromTimestamp($timestamp);
+$ethipic = Andegna\DateTimeFactory::fromTimestamp($timestamp);
 ```
 
-You can also or pass a `DateTimeZone` object too
+And you are done. You can also or pass a `DateTimeZone` object if you want too
 
 ```php
 $sheger = new DateTimeZone('Africa/Addis_Ababa');
