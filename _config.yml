@@ -1,1 +1,12 @@
 theme: jekyll-theme-architect
+
+author: Sam As End
+
+author_email: 4sam21@gmail.com
+
+highlighter: rouge
+
+markdown: kramdown
+
+gems:
+  - jemoji
