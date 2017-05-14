@@ -5,7 +5,7 @@ namespace Andegna\Converter;
 use Andegna\Exception\InvalidDateException;
 
 /**
- * FromJdnConverter.
+ * Converts JDN To Ethiopian Date.
  */
 class FromJdnConverter extends Converter
 {
@@ -22,6 +22,8 @@ class FromJdnConverter extends Converter
     }
 
     /**
+     * Set the JDN for processing
+     *
      * @param $jdn
      *
      * @throws \Andegna\Exception\InvalidDateException
