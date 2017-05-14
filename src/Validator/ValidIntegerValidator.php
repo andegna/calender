@@ -8,20 +8,14 @@ namespace Andegna\Validator;
 trait ValidIntegerValidator
 {
     /**
-     * @internal ... args of values
+     * @param array $integers a list of integers
      *
-     * @return bool
+     * @return bool returns true if all the elements in the array are integer
      */
-    public function isValidInteger()
+    public function isValidInteger(... $integers)
     {
-        $args = func_get_args();
-
-        foreach ($args as $arg) {
-            if (!is_int($arg)) {
-                return false;
-            }
-        }
-
-        return true;
+        return array_reduce($integers, function ($carry, $integer) {
+            return $carry && is_int($integer);
+        }, true);
     }
 }
