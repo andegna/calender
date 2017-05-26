@@ -18,5 +18,4 @@ class InvalidDateException extends Exception
     {
         parent::__construct($message);
     }
-
 }

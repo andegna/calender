@@ -20,8 +20,10 @@ trait Processor
      */
     protected function fixForChaining($dateTime = false)
     {
-        if ($dateTime === false) return $dateTime;
-        
+        if ($dateTime === false) {
+            return $dateTime;
+        }
+
         $this->updateComputedFields();
 
         return $this;

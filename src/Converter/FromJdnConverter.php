@@ -22,7 +22,7 @@ class FromJdnConverter extends Converter
     }
 
     /**
-     * Set the JDN for processing
+     * Set the JDN for processing.
      *
      * @param $jdn
      *

@@ -12,7 +12,7 @@ trait ValidIntegerValidator
      *
      * @return bool returns true if all the elements in the array are integer
      */
-    public function isValidInteger(... $integers)
+    public function isValidInteger(...$integers)
     {
         return array_reduce($integers, function ($carry, $integer) {
             return $carry && is_int($integer);
