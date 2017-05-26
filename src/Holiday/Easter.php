@@ -35,7 +35,7 @@ class Easter
     {
         // convert the Ethiopian year to a Julian year
         // ሚያዝያ 1 is just a random day after the Gregorian new year
-        $julian_year = (int)DateTimeFactory::of($year, 8, 1)
+        $julian_year = (int) DateTimeFactory::of($year, 8, 1)
             ->toGregorian()->format('Y');
 
         // get the number of days from vernal equinox to the Easter in the given Julian year
