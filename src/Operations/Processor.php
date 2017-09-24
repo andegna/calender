@@ -23,6 +23,7 @@ trait Processor
         if ($dateTime === false) {
             return $dateTime;
         }
+
         $this->updateComputedFields();
 
         return $this;

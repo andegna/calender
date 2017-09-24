@@ -6,7 +6,7 @@ use Andegna\Exception\InvalidDateException;
 use Andegna\Validator\DateValidator as DateValidator;
 
 /**
- * ToJdnConverter.
+ * Converts Ethiopian Date to JDN.
  */
 class ToJdnConverter extends Converter
 {
@@ -25,6 +25,8 @@ class ToJdnConverter extends Converter
     }
 
     /**
+     * Set the date for processing.
+     *
      * @param $day
      * @param $month
      * @param $year

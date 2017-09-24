@@ -9,7 +9,7 @@ use Andegna\Validator\LeapYearValidator;
 use DateTime as GregorianDateTime;
 
 /**
- * Class Initiator.
+ * Initiator trait.
  */
 trait Initiator
 {
