@@ -18,6 +18,8 @@ layout: default
 >
 > And by the way it also supports Amharic date formatting and much much more.
 
+<h3 id="now"></h3>
+
 <a name="top"></a>
 
 - [Basic Usage](#basic-usage-hammer)
@@ -596,3 +598,13 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
     Push to the branch (git push origin my-new-feature)
     Create new Pull Request
 
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.get('http://calender.1gna.com/')
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+</script>
