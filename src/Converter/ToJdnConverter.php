@@ -19,7 +19,7 @@ class ToJdnConverter extends Converter
      *
      * @throws \Andegna\Exception\InvalidDateException
      */
-    public function __construct($day, $month, $year)
+    public function __construct(int $day, int $month, int $year)
     {
         $this->set($day, $month, $year);
     }
@@ -35,7 +35,7 @@ class ToJdnConverter extends Converter
      *
      * @return $this
      */
-    public function set($day, $month, $year)
+    public function set(int $day, int $month, int $year)
     {
         $validator = new DateValidator($day, $month, $year);
 

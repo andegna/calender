@@ -14,7 +14,7 @@ class InvalidDateException extends Exception
      *
      * @param $message string
      */
-    public function __construct($message = 'Invalid date was given')
+    public function __construct(string $message = 'Invalid date was given')
     {
         parent::__construct($message);
     }

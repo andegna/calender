@@ -3,12 +3,13 @@
 namespace Andegna\PHPUnit\Converter;
 
 use Andegna\Converter\ToJdnConverter;
+use Andegna\Exception\InvalidDateException;
 
 class ToJdnConverterTest extends ConverterTest
 {
     /**
      * @dataProvider invalidDateDataProvider
-     * @expectedException \Andegna\Exception\InvalidDateException
+     * @expectedException \TypeError
      *
      * @param $month
      * @param $day
@@ -16,6 +17,20 @@ class ToJdnConverterTest extends ConverterTest
      * @param $ignore
      */
     public function test_me_please($month, $day, $year, $ignore)
+    {
+        new ToJdnConverter($day, $month, $year);
+    }
+
+    /**
+     * @dataProvider illegalDateDataProvider
+     * @expectedException \Andegna\Exception\InvalidDateException
+     *
+     * @param $month
+     * @param $day
+     * @param $year
+     * @param $ignore
+     */
+    public function test_me_too($month, $day, $year, $ignore)
     {
         new ToJdnConverter($day, $month, $year);
     }
