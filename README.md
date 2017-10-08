@@ -96,7 +96,7 @@ echo $ethipic->toGregorian()->format(DATE_COOKIE);
 <a name="requirement"></a>
 ## Requirement [&uarr;](#top)
 
-Andegna Calender requires `php: >=5.6` with fire and blood :fire: :dragon:. 
+Andegna Calender requires `php: >=7.0` with fire and blood :fire: :dragon:. 
 
 <a name="installation"></a>
 ## Installation [&uarr;](#top)
