@@ -76,7 +76,8 @@ abstract class ConverterTest extends TestCase
         ];
     }
 
-    public function illegalDateDataProvider() {
+    public function illegalDateDataProvider()
+    {
         return [
             // day 1 - 30
             [3, -1, 2000, false],
@@ -104,5 +105,4 @@ abstract class ConverterTest extends TestCase
             [13, 6, 2006, false],
         ];
     }
-
 }

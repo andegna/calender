@@ -220,9 +220,9 @@ trait Formatter
     /**
      * Return the year in geez number.
      *
-     * @return string
-     *
      * @throws \Geezify\Exception\NotAnIntegerArgumentException
+     *
+     * @return string
      */
     public function getYearInGeez(): string
     {

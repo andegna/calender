@@ -3,7 +3,6 @@
 namespace Andegna\PHPUnit\Converter;
 
 use Andegna\Converter\FromJdnConverter;
-use Andegna\Exception\InvalidDateException;
 
 class FromJdnConverterTest extends ConverterTest
 {
