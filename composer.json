@@ -30,7 +30,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"develop": "2.1-dev"
+			"develop": "2.2-dev"
 		}
 	}
 }
