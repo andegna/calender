@@ -18,7 +18,6 @@ abstract class ConverterTest extends TestCase
             [null],
             [[4, 2, 0]],
             ['lorem ipsum'],
-            [true],
             [new \stdClass()],
         ];
     }
@@ -74,7 +73,12 @@ abstract class ConverterTest extends TestCase
             [1, 1, '', false],
             ['1', 1, null, false],
             ['', 1, '', false],
+        ];
+    }
 
+    public function illegalDateDataProvider()
+    {
+        return [
             // day 1 - 30
             [3, -1, 2000, false],
             [3, 0, 2000, false],

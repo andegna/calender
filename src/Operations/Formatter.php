@@ -21,7 +21,7 @@ trait Formatter
      *
      * @return string
      */
-    public function format($format)
+    public function format(string $format)
     {
         $result = '';
         $length = \mb_strlen($format);
@@ -47,7 +47,7 @@ trait Formatter
      *
      * @return string
      */
-    protected function getValueOfFormatCharacter($name, &$skip = false)
+    protected function getValueOfFormatCharacter(string $name, bool &$skip = false): string
     {
         if (($r = $this->shouldWeSkip($name, $skip)) !== false) {
             return ''.$r;
@@ -65,7 +65,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getDayTwoDigit()
+    public function getDayTwoDigit(): string
     {
         $day = $this->getValueOfFormatCharacter('j');
 
@@ -77,7 +77,7 @@ trait Formatter
      *
      * return string
      */
-    public function getTextualDay()
+    public function getTextualDay(): string
     {
         return Constants::WEEK_NAME[$this->getDayOfWeek()];
     }
@@ -87,7 +87,7 @@ trait Formatter
      *
      * return string
      */
-    public function getTextualDayShort()
+    public function getTextualDayShort(): string
     {
         $week = $this->getValueOfFormatCharacter('l');
 
@@ -99,7 +99,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getTextualMonth()
+    public function getTextualMonth(): string
     {
         return Constants::MONTHS_NAME[$this->getMonth()];
     }
@@ -109,7 +109,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getTextualMonthShort()
+    public function getTextualMonthShort(): string
     {
         $F = $this->getValueOfFormatCharacter('F');
 
@@ -121,11 +121,11 @@ trait Formatter
      *
      * @return string
      */
-    public function getMonthTwoDigit()
+    public function getMonthTwoDigit(): string
     {
         $n = $this->getValueOfFormatCharacter('n');
 
-        return (strlen($n) == 1) ? "0$n" : "$n";
+        return (strlen($n) === 1) ? "0$n" : "$n";
     }
 
     /**
@@ -133,7 +133,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getLeapYearString()
+    public function getLeapYearString(): string
     {
         return $this->isLeapYear() ? '1' : '0';
     }
@@ -143,7 +143,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getYearShort()
+    public function getYearShort(): string
     {
         $Y = $this->getValueOfFormatCharacter('Y');
 
@@ -163,7 +163,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getTimeOfDay()
+    public function getTimeOfDay(): string
     {
         $array = [
             'እኩለ፡ሌሊት'  => [23, 0],
@@ -181,7 +181,7 @@ trait Formatter
         $hour = $this->getHour();
 
         $result = array_filter($array, function ($value) use ($hour) {
-            return false !== array_search($hour, $value, true);
+            return in_array($hour, $value, true);
         });
 
         return key($result);
@@ -192,7 +192,7 @@ trait Formatter
      *
      * @return string the ethiopian orthodox day name
      */
-    public function getOrthodoxDay()
+    public function getOrthodoxDay(): string
     {
         return Constants::ORTHODOX_DAY_NAME[$this->getDay()];
     }
@@ -202,7 +202,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getTextualEra()
+    public function getTextualEra(): string
     {
         return $this->getYear() > 0 ? 'ዓ/ም' : 'ዓ/ዓ';
     }
@@ -212,7 +212,7 @@ trait Formatter
      *
      * @return string the ethiopian orthodox year name
      */
-    public function getOrthodoxYear()
+    public function getOrthodoxYear(): string
     {
         return Constants::ORTHODOX_YEAR_NAME[$this->getYear() % 4];
     }
@@ -220,9 +220,11 @@ trait Formatter
     /**
      * Return the year in geez number.
      *
+     * @throws \Geezify\Exception\NotAnIntegerArgumentException
+     *
      * @return string
      */
-    public function getYearInGeez()
+    public function getYearInGeez(): string
     {
         return Geezify::create()->toGeez($this->getYear());
     }
@@ -232,7 +234,7 @@ trait Formatter
      *
      * @return string
      */
-    public function getDayInGeez()
+    public function getDayInGeez(): string
     {
         return Geezify::create()->toGeez($this->getDay());
     }
@@ -242,7 +244,7 @@ trait Formatter
      *
      * @return bool
      */
-    protected function isOverrideFormatCharacter($name)
+    protected function isOverrideFormatCharacter($name): bool
     {
         return array_key_exists($name, Constants::FORMAT_MAPPER);
     }
@@ -268,7 +270,7 @@ trait Formatter
      *
      * @return bool
      */
-    protected function shouldWeSkip4Real($name, &$skip)
+    protected function shouldWeSkip4Real($name, &$skip): bool
     {
         return $this->isSkipCharacter($name) || $skip;
     }
@@ -279,7 +281,7 @@ trait Formatter
      *
      * @return string
      */
-    protected function skipCharacter($name, &$skip)
+    protected function skipCharacter($name, &$skip): string
     {
         if ($skip) {
             $skip = false;
@@ -299,7 +301,7 @@ trait Formatter
      *
      * @return bool
      */
-    protected function isSkipCharacter($name)
+    protected function isSkipCharacter($name): bool
     {
         return $name === '\\';
     }

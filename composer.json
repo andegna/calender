@@ -15,7 +15,7 @@
 		}
 	],
 	"require": {
-		"php": "^5.6 || ^7.0",
+		"php": ">=7.0.0",
 		"ext-calendar": "*",
 		"geezify/geezify-php": "^1.2"
 	},
@@ -30,7 +30,7 @@
 	},
 	"extra": {
 		"branch-alias": {
-			"develope": "2.1-dev"
+			"develop": "2.1-dev"
 		}
 	}
 }

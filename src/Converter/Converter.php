@@ -31,7 +31,7 @@ abstract class Converter
      *
      * @return int
      */
-    public function getDay()
+    public function getDay(): int
     {
         return $this->day;
     }
@@ -41,7 +41,7 @@ abstract class Converter
      *
      * @return int
      */
-    public function getMonth()
+    public function getMonth(): int
     {
         return $this->month;
     }
@@ -51,7 +51,7 @@ abstract class Converter
      *
      * @return int
      */
-    public function getYear()
+    public function getYear(): int
     {
         return $this->year;
     }
@@ -61,7 +61,7 @@ abstract class Converter
      *
      * @return int
      */
-    public function getJdn()
+    public function getJdn(): int
     {
         return $this->jdn;
     }

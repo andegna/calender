@@ -4,7 +4,6 @@ namespace Andegna\Operations;
 
 use Andegna\Converter\Converter;
 use Andegna\Converter\FromJdnConverter;
-use Andegna\DateTime;
 use Andegna\Validator\LeapYearValidator;
 use DateTime as GregorianDateTime;
 
@@ -37,7 +36,7 @@ trait Initiator
      *
      * @return int
      */
-    protected function getJdnFromBase(GregorianDateTime $dateTime)
+    protected function getJdnFromBase(GregorianDateTime $dateTime): int
     {
         $year = $dateTime->format('Y');
         $month = $dateTime->format('m');
@@ -100,7 +99,7 @@ trait Initiator
      */
     protected function computeDayOfYear()
     {
-        $this->dayOfYear = ($this->month - 1) * 30 + ($this->day);
+        $this->dayOfYear = ($this->month - 1) * 30 + $this->day;
     }
 
     /**
@@ -110,11 +109,7 @@ trait Initiator
      */
     protected function computeDaysInMonth()
     {
-        if ($this->month === 13) {
-            $this->daysInMonth = $this->leapYear ? 6 : 5;
-        }
-
-        $this->daysInMonth = 30;
+        $this->daysInMonth = $this->month === 13 ? ($this->leapYear ? 6 : 5) : 30;
     }
 
     /**
@@ -124,6 +119,6 @@ trait Initiator
      */
     protected function cacheDayOfWeek()
     {
-        $this->dayOfWeek = intval($this->dateTime->format('N'));
+        $this->dayOfWeek = (int) $this->dateTime->format('N');
     }
 }

@@ -16,7 +16,7 @@ class FromJdnConverter extends Converter
      *
      * @throws \Andegna\Exception\InvalidDateException
      */
-    public function __construct($jdn)
+    public function __construct(int $jdn)
     {
         $this->set($jdn);
     }
@@ -30,7 +30,7 @@ class FromJdnConverter extends Converter
      *
      * @return $this
      */
-    public function set($jdn)
+    public function set(int $jdn)
     {
         if (!$this->isValidInteger($jdn)) {
             throw new InvalidDateException();
@@ -48,7 +48,7 @@ class FromJdnConverter extends Converter
      *
      * @return array
      */
-    protected static function process($jdn)
+    protected static function process(int $jdn): array
     {
         $r = (($jdn - 1723856) % 1461);
         $n = ($r % 365) + 365 * (int) ($r / 1460);
@@ -64,9 +64,9 @@ class FromJdnConverter extends Converter
     /**
      * @param $date array
      *
-     * @return $this
+     * @return $this|Converter
      */
-    protected function setDate(array $date)
+    protected function setDate(array $date): Converter
     {
         $this->day = $date['day'];
         $this->month = $date['month'];

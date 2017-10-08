@@ -9,7 +9,7 @@ class FromJdnConverterTest extends ConverterTest
     /**
      * @dataProvider invalidJDNDataProvider
      *
-     * @expectedException \Andegna\Exception\InvalidDateException
+     * @expectedException \TypeError
      *
      * @param $jdn
      */

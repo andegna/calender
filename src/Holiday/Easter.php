@@ -31,7 +31,7 @@ class Easter
      *
      * @return \Andegna\DateTime
      */
-    public function get($year)
+    public function get(int $year)
     {
         // convert the Ethiopian year to a Julian year
         // ሚያዝያ 1 is just a random day after the Gregorian new year
