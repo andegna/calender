@@ -25,6 +25,7 @@ abstract class ConverterTest extends TestCase
     public function validJDNDataProvider()
     {
         return [
+            // https://github.com/svn2github/icu4j/blob/master/main/tests/core/src/com/ibm/icu/dev/test/calendar/EthiopicTest.java#L77..L83
             [2401443, 1855, 2, 20],
             [2402423, 1857, 10, 29],
             [2402631, 1858, 5, 22],
@@ -32,25 +33,31 @@ abstract class ConverterTest extends TestCase
             [2402972, 1859, 4, 28],
             [2403345, 1860, 5, 5],
 
+            // https://github.com/svn2github/icu4j/blob/master/main/tests/core/src/com/ibm/icu/dev/test/calendar/EthiopicTest.java#L94..L104
+            [1723856, 0, 1, 1],
             [1724221, 1, 1, 1],
             [1724586, 2, 1, 1],
             [1724951, 3, 1, 1],
-
+            [1725317, 4, 1, 1],
+            [1724220, 0, 13, 5],
             [1724585, 1, 13, 5],
             [1724950, 2, 13, 5],
             [1725315, 3, 13, 5],
             [1725316, 3, 13, 6],
+            [1725681, 4, 13, 5],
 
+            // https://github.com/svn2github/icu4j/blob/master/main/tests/core/src/com/ibm/icu/dev/test/calendar/EthiopicTest.java#L106..L109
             [2299159, 1575, 2, 6],
-            [2299160, 1575, 2, 7],
-
+            [2299160, 1575, 2, 7], // Julian 04/10/1582
             [2299161, 1575, 2, 8],
             [2299162, 1575, 2, 9],
 
+            // https://github.com/svn2github/icu4j/blob/master/main/tests/core/src/com/ibm/icu/dev/test/calendar/EthiopicTest.java#L111..L113
             [2415021, 1892, 4, 23],
             [2453372, 1997, 4, 23],
             [2454720, 2000, 13, 5],
 
+            // more from ethiopic.org
             [2415385, 1893, 4, 22],
             [2448988, 1985, 4, 22],
             [2450449, 1989, 4, 22],
