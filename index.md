@@ -598,13 +598,18 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
     Push to the branch (git push origin my-new-feature)
     Create new Pull Request
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-    axios.get('http://calender.1gna.com/')
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://calender.1gna.com');
+    
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            console.log(responseText);
+        }
+        else {
+            console.log(xhr.status);
+        }
+    };
+    
+    xhr.send();
 </script>
