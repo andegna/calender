@@ -8,6 +8,7 @@
 [![Latest Stable Version](https://poser.pugx.org/andegna/calender/v/stable.svg)](https://packagist.org/packages/andegna/calender)
 [![Latest Unstable Version](https://poser.pugx.org/andegna/calender/v/unstable.svg)](https://packagist.org/packages/andegna/calender)
 [![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_shield)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
@@ -593,3 +594,7 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
     Commit your changes (git commit -am 'Add some feature')
     Push to the branch (git push origin my-new-feature)
     Create new Pull Request
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_large)
