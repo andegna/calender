@@ -597,19 +597,3 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
     Commit your changes (git commit -am 'Add some feature')
     Push to the branch (git push origin my-new-feature)
     Create new Pull Request
-
-<script>
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://calender.1gna.com');
-    
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            console.log(responseText);
-        }
-        else {
-            console.log(xhr.status);
-        }
-    };
-    
-    xhr.send();
-</script>
