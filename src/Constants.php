@@ -19,7 +19,7 @@ class Constants
 
     const WEEK_NAME = [1 => 'ሰኞ', 'ማክሰኞ', 'ረቡዕ', 'ሓሙስ', 'ዓርብ', 'ቅዳሜ', 'እሑድ'];
 
-    const ORTHODOX_YEAR_NAME = ['ማቴዎስ', 'ማርቆስ', 'ሉቃስ', 'ዮሐንስ'];
+    const ORTHODOX_YEAR_NAME = ['ዮሐንስ', 'ማቴዎስ', 'ማርቆስ', 'ሉቃስ'];
 
     const ORTHODOX_DAY_NAME = [
         1 => 'ልደታ', 'አባ፡ጉባ', 'በእታ', 'ዮሐንስ', 'አቦ',
