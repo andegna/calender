@@ -240,7 +240,7 @@ trait Formatter
     }
 
     /**
-     * Return an empty string
+     * Return an empty string.
      *
      * @return string
      */
@@ -252,7 +252,7 @@ trait Formatter
     }
 
     /**
-     * Return `ኛው` rather than st,nd,rd, and th
+     * Return `ኛው` rather than st,nd,rd, and th.
      *
      * @return string
      */
