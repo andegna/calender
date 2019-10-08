@@ -240,6 +240,28 @@ trait Formatter
     }
 
     /**
+     * Return an empty string.
+     *
+     * @return string
+     */
+    public function getTimeZoneString(): string
+    {
+        $name = $this->getTimezone()->getName();
+
+        return Constants::TIME_ZONES[$name] ?? sprintf('ጂ ኤም ቲ%s', $name);
+    }
+
+    /**
+     * Return `ኛው` rather than st,nd,rd, and th.
+     *
+     * @return string
+     */
+    public function getOrdinalSuffix(): string
+    {
+        return 'ኛው';
+    }
+
+    /**
      * @param string $name
      *
      * @return bool

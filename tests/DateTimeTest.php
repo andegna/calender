@@ -27,7 +27,7 @@ class DateTimeTest extends TestCase
 
         $this->dateTime = DateTimeFactory::of(1986, 3, 21);
         $this->otherDateTime = new DateTime($this->dateTime->toGregorian()->add(new \DateInterval('P2Y4DT6H8M')));
-        $this->yetAnotherDateTime = DateTimeFactory::of(2000, 1, 1)->sub(new \DateInterval('PT1H'));
+        $this->yetAnotherDateTime = DateTimeFactory::of(2000, 1, 1, 0, 0, 0, new \DateTimeZone('America/Los_Angeles'))->sub(new \DateInterval('PT1H'));
     }
 
     public function test_my_birth_day()
@@ -45,19 +45,19 @@ class DateTimeTest extends TestCase
         $this->assertEquals(10800, $this->dateTime->getOffset());
         $this->assertEquals('Africa/Addis_Ababa', $this->dateTime->getTimezone()->getName());
 
-        $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 EAT',
+        $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ)',
             $this->dateTime->format(DATE_COOKIE));
 
-        $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት EAT 1986 ዓ/ም',
+        $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ) 1986 ዓ/ም',
             $this->dateTime->format(Constants::DATE_ETHIOPIAN));
 
-        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 ጡዋት EAT 1988 (ዮሐንስ) ዓ/ም',
+        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 ጡዋት የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ) 1988 (ዮሐንስ) ዓ/ም',
             $this->otherDateTime->format(Constants::DATE_ETHIOPIAN_ORTHODOX));
 
-        $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 EAT',
+        $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ)',
             $this->dateTime->format(DATE_COOKIE));
 
-        $this->assertEquals('ማክሰኞ፣ ጳጉሜን ፮ ቀን (ኢያሱስ) 23:00:00 እኩለ፡ሌሊት EAT ፲፱፻፺፱ (ሉቃስ) ዓ/ም',
+        $this->assertEquals('ማክሰኞ፣ ጳጉሜን ፮ ቀን (ኢያሱስ) 23:00:00 እኩለ፡ሌሊት የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ) ፲፱፻፺፱ (ሉቃስ) ዓ/ም',
             $this->yetAnotherDateTime->format(Constants::DATE_GEEZ_ORTHODOX));
     }
 
@@ -71,15 +71,15 @@ class DateTimeTest extends TestCase
     public function test_processor_trait()
     {
         $this->yetAnotherDateTime->add(new \DateInterval('P1D'));
-        $this->assertEquals('ረቡዕ, 01-መስ-2000 23:00:00 EAT',
+        $this->assertEquals('ረቡዕ, 01-መስ-2000 23:00:00 የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ)',
             $this->yetAnotherDateTime->format(DATE_COOKIE));
 
         $this->yetAnotherDateTime->sub(new \DateInterval('P3D'));
-        $this->assertEquals('እሑ, 04 ጳጉ 1999 23:00:00 +0300',
+        $this->assertEquals('እሑ, 04 ጳጉ 1999 23:00:00 -0700',
             $this->yetAnotherDateTime->format(DATE_RFC2822));
 
         $this->yetAnotherDateTime->modify('+1 hour');
-        $this->assertEquals('ሰኞ, 05-ጳጉ-1999 00:00:00 EAT',
+        $this->assertEquals('ሰኞ, 05-ጳጉ-1999 00:00:00 የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ)',
             $this->yetAnotherDateTime->format(DATE_COOKIE));
 
         $this->yetAnotherDateTime->setDate(2005, 5, 5);
@@ -88,16 +88,16 @@ class DateTimeTest extends TestCase
             $this->yetAnotherDateTime->format('Ymd'));
 
         $this->yetAnotherDateTime->setTimestamp(1494567149);
-        $this->assertEquals('ዓርብ, 04-ግን-2009 08:32:29 EAT',
+        $this->assertEquals('ሓሙስ, 03-ግን-2009 22:32:29 የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ)',
             $this->yetAnotherDateTime->format(DATE_COOKIE));
 
         $this->yetAnotherDateTime->setTime(6, 0, 0);
-        $this->assertEquals('ዓርብ 4th of ግንቦት 2009 06:00:00 ጡዋት',
-            $this->yetAnotherDateTime->format('l jS \o\f F Y h:i:s A'));
+        $this->assertEquals('ሓሙስ 3th of ግንቦት 2009 06:00:00 ጡዋት',
+            $this->yetAnotherDateTime->format('l j\t\h \o\f F Y h:i:s A'));
 
         $this->yetAnotherDateTime->setTimezone(new \DateTimeZone('America/Detroit'));
-        $this->assertEquals('ሓሙስ the 3th',
-            $this->yetAnotherDateTime->format('l \t\h\e jS'));
+        $this->assertEquals('ሓሙስ the 3ኛው, ምስራቃዊ ሰዓት አቆጣጠር (ዲትሮይት)',
+            $this->yetAnotherDateTime->format('l \t\h\e jS, T'));
     }
 
     public function test_datetime_diff()
@@ -138,7 +138,7 @@ class DateTimeTest extends TestCase
 
         $this->assertDiff($diff);
 
-        $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት EAT 1986 ዓ/ም',
+        $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ) 1986 ዓ/ም',
             $this->dateTime->format(Constants::DATE_ETHIOPIAN));
     }
 
