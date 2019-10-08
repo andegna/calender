@@ -59,8 +59,11 @@ class Constants
         'K' => 'getYearInGeez',                 //  ፳፻፱
         'V' => 'getDayInGeez',                  //  ፪
 
+        'e' => 'getTimeZoneString',             // የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ)
         'T' => 'getTimeZoneString',             // የምስራቅ አፍሪካ ሰዓት (አዲስ አበባ)
+
         'S' => 'getOrdinalSuffix',              // ኛው
+        'r' => 'getFormattedDate',              // ቅዳ, 01 መስ 2008 00:00:00 +0330
     ];
 
     const TIME_ZONES = [

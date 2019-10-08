@@ -262,6 +262,16 @@ trait Formatter
     }
 
     /**
+     * RFC 2822 formatted date.
+     *
+     * @return string
+     */
+    public function getFormattedDate(): string
+    {
+        return $this->format(DATE_RFC2822);
+    }
+
+    /**
      * @param string $name
      *
      * @return bool
