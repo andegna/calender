@@ -51,13 +51,13 @@ class DateTimeTest extends TestCase
         $this->assertEquals('ማክሰኞ፣ ኅዳር 21 ቀን 00:00:00 እኩለ፡ሌሊት EAT 1986 ዓ/ም',
             $this->dateTime->format(Constants::DATE_ETHIOPIAN));
 
-        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 ጡዋት EAT 1988 (ማቴዎስ) ዓ/ም',
+        $this->assertEquals('ሰኞ፣ ኅዳር 24 ቀን (ተክለ፡ሐይማኖት) 06:08:00 ጡዋት EAT 1988 (ዮሐንስ) ዓ/ም',
             $this->otherDateTime->format(Constants::DATE_ETHIOPIAN_ORTHODOX));
 
         $this->assertEquals('ማክሰኞ, 21-ኅዳ-1986 00:00:00 EAT',
             $this->dateTime->format(DATE_COOKIE));
 
-        $this->assertEquals('ማክሰኞ፣ ጳጉሜን ፮ ቀን (ኢያሱስ) 23:00:00 እኩለ፡ሌሊት EAT ፲፱፻፺፱ (ዮሐንስ) ዓ/ም',
+        $this->assertEquals('ማክሰኞ፣ ጳጉሜን ፮ ቀን (ኢያሱስ) 23:00:00 እኩለ፡ሌሊት EAT ፲፱፻፺፱ (ሉቃስ) ዓ/ም',
             $this->yetAnotherDateTime->format(Constants::DATE_GEEZ_ORTHODOX));
     }
 
@@ -170,5 +170,17 @@ class DateTimeTest extends TestCase
             $this->assertEquals($ethiopian->getSecond(), (int) $gregorian->format('s'));
             $this->assertEquals($ethiopian->getMicro(), (int) $gregorian->format('u'));
         }
+    }
+
+    public function test_year_name()
+    {
+        $this->assertEquals('ዮሐንስ', DateTimeFactory::of(2008, 1, 1)->format('X'));
+        $this->assertEquals('ማቴዎስ', DateTimeFactory::of(2009, 1, 1)->format('X'));
+        $this->assertEquals('ማርቆስ', DateTimeFactory::of(2010, 1, 1)->format('X'));
+
+        $this->assertEquals('ሉቃስ', DateTimeFactory::of(2011, 13, 6)->format('X'));
+
+        $this->assertEquals('ዮሐንስ', DateTimeFactory::of(2012, 1, 1)->format('X'));
+        $this->assertEquals('ማቴዎስ', DateTimeFactory::of(2013, 1, 1)->format('X'));
     }
 }
