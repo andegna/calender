@@ -1,18 +1,18 @@
-# Andegna Calender ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
+# Andegna Calendar ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
 
-[![Build Status](https://api.travis-ci.org/andegna/calender.svg?branch=master)](https://travis-ci.org/andegna/calender)
+[![Build Status](https://api.travis-ci.org/andegna/calendar.svg?branch=master)](https://travis-ci.org/andegna/calendar)
 [![StyleCI](https://styleci.io/repos/30183050/shield)](https://styleci.io/repos/30183050)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/andegna/calender/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
-[![Total Downloads](https://poser.pugx.org/andegna/calender/d/total.svg)](https://packagist.org/packages/andegna/calender)
-[![Latest Stable Version](https://poser.pugx.org/andegna/calender/v/stable.svg)](https://packagist.org/packages/andegna/calender)
-[![Latest Unstable Version](https://poser.pugx.org/andegna/calender/v/unstable.svg)](https://packagist.org/packages/andegna/calender)
-[![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_shield)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calendar/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calendar/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/andegna/calendar/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calendar/?branch=master)
+[![Total Downloads](https://poser.pugx.org/andegna/calendar/d/total.svg)](https://packagist.org/packages/andegna/calendar)
+[![Latest Stable Version](https://poser.pugx.org/andegna/calendar/v/stable.svg)](https://packagist.org/packages/andegna/calendar)
+[![Latest Unstable Version](https://poser.pugx.org/andegna/calendar/v/unstable.svg)](https://packagist.org/packages/andegna/calendar)
+[![License](https://poser.pugx.org/andegna/calendar/license.svg)](https://packagist.org/packages/andegna/calendar)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalendar.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalendar?ref=badge_shield)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
-> If you ever want to convert **Ethiopian Calender** to any other calendar system
+> If you ever want to convert **Ethiopian Calendar** to any other calendar system
 > (like the Gregorian Calendar) this is the right (well-tested, well designed, high quality) package for you.
 >
 > And by the way it also supports Amharic date formatting and much much more.
@@ -30,7 +30,7 @@
     - [From the system time](#from-the-system-time)
     - [To DateTime](#to-datetime)
 - [Low level Conversion](#low-level-conversion)
-    - [How PHP calender conversion works](#how-php-calender-conversion-works)
+    - [How PHP calendar conversion works](#how-php-calendar-conversion-works)
     - [From JDN](#from-jdn)
     - [To JDN](#to-jdn)
     - [Practical Example](#practical-example)
@@ -97,12 +97,12 @@ echo $ethipic->toGregorian()->format(DATE_COOKIE);
 <a name="requirement"></a>
 ## Requirement [&uarr;](#top)
 
-Andegna Calender requires `php: >=7.0` with fire and blood :fire: :dragon:. 
+Andegna Calendar requires `php: >=7.0` with fire and blood :fire: :dragon:. 
 
 <a name="installation"></a>
 ## Installation [&uarr;](#top)
 
-**Andegna Calender** utilizes [Composer](https://getcomposer.org/) to manage its dependencies. 
+**Andegna Calendar** utilizes [Composer](https://getcomposer.org/) to manage its dependencies. 
 So, before using this, make sure you have Composer installed on your machine.
 
 > Composer is a tool for dependency management in PHP. It allows you to declare the libraries your project depends on and it will manage (install/update) them for you.
@@ -110,7 +110,7 @@ So, before using this, make sure you have Composer installed on your machine.
 If you never used composer before :flushed:, PLEASE read some [intro here](https://getcomposer.org/doc/00-intro.md) before you write any PHP code again.
 
 ```bash
-composer require andegna/calender
+composer require andegna/calendar
 ```
 
 <a name="conversion"></a>
@@ -250,8 +250,8 @@ $gregorian = $now->toGregorian();
 
 If you are a geek like me, you are probably interested in Calendar coz it has Astronomy, Maths, and History.
 
-<a name="how-php-calender-conversion-works"></a>
-### How PHP calender conversion works [&uarr;](#top)
+<a name="how-php-calendar-conversion-works"></a>
+### How PHP calendar conversion works [&uarr;](#top)
 
 > The calendar extension presents a series of functions to simplify converting between different calendar formats (except Ethiopian). 
 > The intermediary or standard it is based on is the **Julian Day Count**. The Julian Day Count is a count of days starting from January 1st, 4713 B.C. 
@@ -261,7 +261,7 @@ If you are a geek like me, you are probably interested in Calendar coz it has As
 
 Those words are straight from the [php docs](http://php.net/manual/en/intro.calendar.php).
 
-So we need to implement two things to convert Ethiopian date to any other calender.
+So we need to implement two things to convert Ethiopian date to any other calendar.
  1. Convert Ethiopian Date To Julian Date Count
  2. Convert Julian Date Count To Ethiopian Date
 
@@ -312,7 +312,7 @@ $converter = new Andegna\Converter\ToJdnConverter($et->getDay(), $et->getMonth()
 // convert it to jdn
 $jdn = $converter->getJdn();
 
-// use the built-in php function to convert the jdn to the jewish calender 
+// use the built-in php function to convert the jdn to the jewish calendar 
 $jewish_date1 = jdtojewish($jdn);
 
 // 9/16/5777
@@ -358,7 +358,7 @@ echo $ethiopic->toGregorian()->format(DATE_COOKIE);
 - Julian Calendar
 - Unix (I know what you are thinking. It's not a calendar but it handy)
 
-Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calender function
+Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calendar function
 
 <a name="manipulation"></a>
 ## Manipulation [&uarr;](#top)
@@ -597,4 +597,4 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
 
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalendar.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalendar?ref=badge_large)
