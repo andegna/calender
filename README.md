@@ -1,14 +1,14 @@
 # Andegna Calendar ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
 
-[![Build Status](https://api.travis-ci.org/andegna/calendar.svg?branch=master)](https://travis-ci.org/andegna/calendar)
+[![Build Status](https://api.travis-ci.org/andegna/calender.svg?branch=master)](https://travis-ci.org/andegna/calender)
 [![StyleCI](https://styleci.io/repos/30183050/shield)](https://styleci.io/repos/30183050)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calendar/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calendar/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/andegna/calendar/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calendar/?branch=master)
-[![Total Downloads](https://poser.pugx.org/andegna/calendar/d/total.svg)](https://packagist.org/packages/andegna/calendar)
-[![Latest Stable Version](https://poser.pugx.org/andegna/calendar/v/stable.svg)](https://packagist.org/packages/andegna/calendar)
-[![Latest Unstable Version](https://poser.pugx.org/andegna/calendar/v/unstable.svg)](https://packagist.org/packages/andegna/calendar)
-[![License](https://poser.pugx.org/andegna/calendar/license.svg)](https://packagist.org/packages/andegna/calendar)
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalendar.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalendar?ref=badge_shield)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/andegna/calender/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
+[![Total Downloads](https://poser.pugx.org/andegna/calender/d/total.svg)](https://packagist.org/packages/andegna/calender)
+[![Latest Stable Version](https://poser.pugx.org/andegna/calender/v/stable.svg)](https://packagist.org/packages/andegna/calender)
+[![Latest Unstable Version](https://poser.pugx.org/andegna/calender/v/unstable.svg)](https://packagist.org/packages/andegna/calender)
+[![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_shield)
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
@@ -110,7 +110,7 @@ So, before using this, make sure you have Composer installed on your machine.
 If you never used composer before :flushed:, PLEASE read some [intro here](https://getcomposer.org/doc/00-intro.md) before you write any PHP code again.
 
 ```bash
-composer require andegna/calendar
+composer require andegna/calender
 ```
 
 <a name="conversion"></a>
@@ -358,7 +358,7 @@ echo $ethiopic->toGregorian()->format(DATE_COOKIE);
 - Julian Calendar
 - Unix (I know what you are thinking. It's not a calendar but it handy)
 
-Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calendar function
+Click [here](http://php.net/manual/en/ref.calender.php) to read more about those calendar function
 
 <a name="manipulation"></a>
 ## Manipulation [&uarr;](#top)
@@ -597,4 +597,4 @@ $is_valid4 = (new LeapYearValidator(2007))->isValid();
 
 
 ## License
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalendar.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalendar?ref=badge_large)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_large)
