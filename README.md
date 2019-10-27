@@ -30,7 +30,7 @@
     - [From the system time](#from-the-system-time)
     - [To DateTime](#to-datetime)
 - [Low level Conversion](#low-level-conversion)
-    - [How PHP calender conversion works](#how-php-calender-conversion-works)
+    - [How PHP calendar conversion works](#how-php-calendar-conversion-works)
     - [From JDN](#from-jdn)
     - [To JDN](#to-jdn)
     - [Practical Example](#practical-example)
@@ -98,6 +98,9 @@ echo $ethipic->toGregorian()->format(DATE_COOKIE);
 ## Requirement [&uarr;](#top)
 
 Andegna Calender requires `php: >=7.0` with fire and blood :fire: :dragon:. 
+
+Please notice the name of this package is `andegna/calender` not `andegna/calendar`.
+It's a spelling mistake am not intending to fix.
 
 <a name="installation"></a>
 ## Installation [&uarr;](#top)
@@ -250,8 +253,8 @@ $gregorian = $now->toGregorian();
 
 If you are a geek like me, you are probably interested in Calendar coz it has Astronomy, Maths, and History.
 
-<a name="how-php-calender-conversion-works"></a>
-### How PHP calender conversion works [&uarr;](#top)
+<a name="how-php-calendar-conversion-works"></a>
+### How PHP calendar conversion works [&uarr;](#top)
 
 > The calendar extension presents a series of functions to simplify converting between different calendar formats (except Ethiopian). 
 > The intermediary or standard it is based on is the **Julian Day Count**. The Julian Day Count is a count of days starting from January 1st, 4713 B.C. 
@@ -261,7 +264,7 @@ If you are a geek like me, you are probably interested in Calendar coz it has As
 
 Those words are straight from the [php docs](http://php.net/manual/en/intro.calendar.php).
 
-So we need to implement two things to convert Ethiopian date to any other calender.
+So we need to implement two things to convert Ethiopian date to any other calendar.
  1. Convert Ethiopian Date To Julian Date Count
  2. Convert Julian Date Count To Ethiopian Date
 
@@ -312,7 +315,7 @@ $converter = new Andegna\Converter\ToJdnConverter($et->getDay(), $et->getMonth()
 // convert it to jdn
 $jdn = $converter->getJdn();
 
-// use the built-in php function to convert the jdn to the jewish calender 
+// use the built-in php function to convert the jdn to the jewish calendar 
 $jewish_date1 = jdtojewish($jdn);
 
 // 9/16/5777
@@ -358,7 +361,7 @@ echo $ethiopic->toGregorian()->format(DATE_COOKIE);
 - Julian Calendar
 - Unix (I know what you are thinking. It's not a calendar but it handy)
 
-Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calender function
+Click [here](http://php.net/manual/en/ref.calendar.php) to read more about those calendar function
 
 <a name="manipulation"></a>
 ## Manipulation [&uarr;](#top)
