@@ -9,7 +9,7 @@ use DateTimeZone;
 /**
  * Ethiopian Christmas.
  */
-class Christmas implements Holiday
+class Christmas implements HolidayInterface
 {
     const TAHISAS = 4; // ታህሳስ ወር
 
@@ -37,7 +37,7 @@ class Christmas implements Holiday
             $day = 28;
         }
 
-        return DateTimeFactory::of($year, self::TAHISAS, $day);
+        return DateTimeFactory::of($year, self::TAHISAS, $day, 0, 0, 0, $this->dateTimeZone);
     }
 
     private function wasAfterALeapYear(int $year): bool

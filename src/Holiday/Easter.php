@@ -9,7 +9,7 @@ use DateTimeZone;
 /**
  * Ethiopian Easter.
  */
-class Easter implements Holiday
+class Easter implements HolidayInterface
 {
     /** @var DateTimeZone */
     private $dateTimeZone;

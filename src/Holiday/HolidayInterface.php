@@ -5,7 +5,7 @@ namespace Andegna\Holiday;
 /**
  * Ethiopian Holiday.
  */
-interface Holiday
+interface HolidayInterface
 {
     /**
      * Get the holiday `Andegna\DateTime` of a given Ethiopian year.
