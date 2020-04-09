@@ -15,7 +15,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0.0",
+		"php": ">=7.1",
 		"ext-calendar": "*",
 		"ext-mbstring": "*",
 		"geezify/geezify-php": "^1.2"
