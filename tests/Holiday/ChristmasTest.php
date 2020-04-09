@@ -2,7 +2,6 @@
 
 namespace Andegna\PHPUnit\Holiday;
 
-use Andegna\DateTime;
 use Andegna\Holiday\Christmas;
 use PHPUnit\Framework\TestCase;
 

@@ -3,7 +3,7 @@
 namespace Andegna\Holiday;
 
 /**
- * Ethiopian Holiday
+ * Ethiopian Holiday.
  */
 interface Holiday
 {

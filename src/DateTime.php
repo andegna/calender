@@ -9,9 +9,9 @@ use DateTime as GregorianDateTime;
  */
 class DateTime
 {
-    use Operations\Initiator,
-        Operations\Processor,
-        Operations\Formatter;
+    use Operations\Initiator;
+    use Operations\Processor;
+    use Operations\Formatter;
 
     /**
      * The Gregorian Date.
