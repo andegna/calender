@@ -27,7 +27,7 @@ class Christmas implements Holiday
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get(int $year)
     {
@@ -46,5 +46,4 @@ class Christmas implements Holiday
 
         return (new LeapYearValidator($previous))->isValid();
     }
-
 }

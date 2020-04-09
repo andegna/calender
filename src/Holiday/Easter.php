@@ -25,7 +25,7 @@ class Easter implements Holiday
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get(int $year)
     {
@@ -47,7 +47,14 @@ class Easter implements Holiday
         $con = new FromJdnConverter($jdn);
 
         // create an Ethiopian date from the converter
-        return DateTimeFactory::of($con->getYear(), $con->getMonth(), $con->getDay(),
-            0, 0, 0, $this->dateTimeZone);
+        return DateTimeFactory::of(
+            $con->getYear(),
+            $con->getMonth(),
+            $con->getDay(),
+            0,
+            0,
+            0,
+            $this->dateTimeZone
+        );
     }
 }

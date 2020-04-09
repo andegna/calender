@@ -58,8 +58,13 @@ class DateTimeFactory
      *
      * @return DateTime the datetime u wanted
      */
-    public static function of($year, $month, $day,
-        $hour = 0, $minute = 0, $second = 0,
+    public static function of(
+        $year,
+        $month,
+        $day,
+        $hour = 0,
+        $minute = 0,
+        $second = 0,
         DateTimeZone $dateTimeZone = null
     ) {
 
@@ -118,8 +123,13 @@ class DateTimeFactory
     public static function fromConverter(Converter $con, DateTimeZone $dateTimeZone = null)
     {
         return static::of(
-            $con->getYear(), $con->getMonth(), $con->getDay(),
-            0, 0, 0, $dateTimeZone
+            $con->getYear(),
+            $con->getMonth(),
+            $con->getDay(),
+            0,
+            0,
+            0,
+            $dateTimeZone
         );
     }
 }
