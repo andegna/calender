@@ -9,7 +9,7 @@ use DateTimeZone;
 /**
  * Ethiopian Easter.
  */
-class Easter
+class Easter implements Holiday
 {
     /** @var DateTimeZone */
     private $dateTimeZone;
@@ -25,11 +25,7 @@ class Easter
     }
 
     /**
-     * Get the easter date of a given Ethiopian year.
-     *
-     * @param $year int Ethiopian year
-     *
-     * @return \Andegna\DateTime
+     * @inheritDoc
      */
     public function get(int $year)
     {
