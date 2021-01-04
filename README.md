@@ -1,4 +1,4 @@
-# Andegna Calender ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
+# Andegna Calendar ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
 
 [![Build Status](https://api.travis-ci.org/andegna/calender.svg?branch=master)](https://travis-ci.org/andegna/calender)
 [![StyleCI](https://styleci.io/repos/30183050/shield)](https://styleci.io/repos/30183050)
@@ -12,7 +12,7 @@
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
 
-> If you ever want to convert **Ethiopian Calender** to any other calendar system
+> If you ever want to convert **Ethiopian Calendar** to any other calendar system
 > (like the Gregorian Calendar) this is the right (well-tested, well designed, high quality) package for you.
 >
 > And by the way it also supports Amharic date formatting and much much more.
