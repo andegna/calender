@@ -107,7 +107,7 @@ class DateTimeTest extends TestCase
 
         $this->yetAnotherDateTime->setTimestamp(1494567149);
         $this->assertEquals(
-            'ሓሙስ, 03-ግን-2009 22:32:29 የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ)',
+            'ሐሙስ, 03-ግን-2009 22:32:29 የፓስፊክ ሰዓት አቆጣጠር (ሎስ አንጀለስ)',
             $this->yetAnotherDateTime->format(DATE_COOKIE)
         );
 
