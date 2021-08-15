@@ -3,18 +3,19 @@
 namespace Andegna\PHPUnit\Converter;
 
 use Andegna\Converter\FromJdnConverter;
+use TypeError;
 
 class FromJdnConverterTest extends ConverterTest
 {
     /**
      * @dataProvider invalidJDNDataProvider
      *
-     * @expectedException \TypeError
-     *
      * @param $jdn
      */
     public function test_exception_is_thrown_on_an_invalid_data($jdn)
     {
+        $this->expectException(TypeError::class);
+
         new FromJdnConverter($jdn);
     }
 

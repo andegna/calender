@@ -7,12 +7,11 @@ use PHPUnit\Framework\TestCase;
 
 class InvalidDateExceptionTest extends TestCase
 {
-    /**
-     * @expectedException \Andegna\Exception\InvalidDateException
-     * @expectedExceptionMessage Invalid date was given
-     */
     public function test_exception_message()
     {
+        $this->expectExceptionMessage("Invalid date was given");
+        $this->expectException(InvalidDateException::class);
+
         throw new InvalidDateException();
     }
 

@@ -7,6 +7,7 @@ use Andegna\Converter\ToJdnConverter;
 use Andegna\DateTime;
 use Andegna\DateTimeFactory;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Warning;
 
 class DateTimeTest extends TestCase
 {
@@ -19,7 +20,7 @@ class DateTimeTest extends TestCase
     /** @var DateTime */
     protected $yetAnotherDateTime;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -113,13 +114,13 @@ class DateTimeTest extends TestCase
 
         $this->yetAnotherDateTime->setTime(6, 0, 0);
         $this->assertEquals(
-            'ሓሙስ 3th of ግንቦት 2009 06:00:00 ጡዋት',
+            'ሐሙስ 3th of ግንቦት 2009 06:00:00 ጡዋት',
             $this->yetAnotherDateTime->format('l j\t\h \o\f F Y h:i:s A')
         );
 
         $this->yetAnotherDateTime->setTimezone(new \DateTimeZone('America/Detroit'));
         $this->assertEquals(
-            'ሓሙስ the 3ኛው, ምስራቃዊ ሰዓት አቆጣጠር (ዲትሮይት)',
+            'ሐሙስ the 3ኛው, ምስራቃዊ ሰዓት አቆጣጠር (ዲትሮይት)',
             $this->yetAnotherDateTime->format('l \t\h\e jS, T')
         );
     }
@@ -168,12 +169,11 @@ class DateTimeTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \PHPUnit_Framework_Error_Warning
-     * @expectedExceptionMessage DateTime::modify(): Failed to parse time string (lorem ipsum) at position 0 (l): The timezone could not be found in the database
-     */
     public function test_datetime_processor_chaining()
     {
+        $this->expectWarning();
+        $this->expectExceptionMessage("DateTime::modify(): Failed to parse time string (lorem ipsum) at position 0 (l): The timezone could not be found in the database");
+
         $this->assertFalse($this->dateTime->modify('lorem ipsum'));
     }
 

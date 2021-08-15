@@ -15,13 +15,13 @@
 		}
 	],
 	"require": {
-		"php": ">=7.1",
+		"php": ">=7.3",
 		"ext-calendar": "*",
 		"ext-mbstring": "*",
 		"geezify/geezify-php": "^1.2"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~5.0"
+		"phpunit/phpunit": "^9.5"
 	},
 	"autoload": {
 		"psr-4": {

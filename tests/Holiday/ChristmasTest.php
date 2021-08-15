@@ -10,7 +10,7 @@ class ChristmasTest extends TestCase
     /** @var Christmas */
     protected $christmas;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
