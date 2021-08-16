@@ -7,7 +7,6 @@ use Andegna\Converter\ToJdnConverter;
 use Andegna\DateTime;
 use Andegna\DateTimeFactory;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Warning;
 
 class DateTimeTest extends TestCase
 {
@@ -172,7 +171,7 @@ class DateTimeTest extends TestCase
     public function test_datetime_processor_chaining()
     {
         $this->expectWarning();
-        $this->expectExceptionMessage("DateTime::modify(): Failed to parse time string (lorem ipsum) at position 0 (l): The timezone could not be found in the database");
+        $this->expectExceptionMessage('DateTime::modify(): Failed to parse time string (lorem ipsum) at position 0 (l): The timezone could not be found in the database');
 
         $this->assertFalse($this->dateTime->modify('lorem ipsum'));
     }
