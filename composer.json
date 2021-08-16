@@ -27,6 +27,9 @@
 			"Andegna\\PHPUnit\\": "tests/"
 		}
 	},
+	"scripts": {
+		"test": "phpunit"
+	},
 	"extra": {
 		"branch-alias": {
 			"develop": "2.4-dev"

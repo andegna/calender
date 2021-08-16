@@ -1,24 +1,33 @@
-name: Tests
+name: PHP Composer
 
-on: [push]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
-  build-test:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - uses: php-actions/composer@v5
+      - name: Validate composer.json and composer.lock
+        run: composer validate --strict
 
-      - name: PHPUnit Tests
-        uses: php-actions/phpunit@v2
+      - name: Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v2
         with:
-          bootstrap: vendor/autoload.php
-          configuration: test/phpunit.xml
-          args: "--coverage-clover=build/logs/coverage.clover"
+          path: vendor
+          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
-      - name: Upload Scrutinizer coverage
-        uses: sudo-bot/action-scrutinizer@latest
-        with:
-          cli-args: "--format=php-clover build/logs/coverage.clover"
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: composer run-script test
