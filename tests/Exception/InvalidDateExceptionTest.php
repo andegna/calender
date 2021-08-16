@@ -9,7 +9,7 @@ class InvalidDateExceptionTest extends TestCase
 {
     public function test_exception_message()
     {
-        $this->expectExceptionMessage("Invalid date was given");
+        $this->expectExceptionMessage('Invalid date was given');
         $this->expectException(InvalidDateException::class);
 
         throw new InvalidDateException();
