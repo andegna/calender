@@ -1,6 +1,6 @@
 # Andegna Calender ![From Ethiopia](https://img.shields.io/badge/From-Ethiopia-brightgreen.svg)
 
-[![Build Status](https://api.travis-ci.org/andegna/calender.svg?branch=master)](https://travis-ci.org/andegna/calender)
+![Build Status](https://github.com/andegna/calender/actions/workflows/tests.yml/badge.svg)
 [![StyleCI](https://styleci.io/repos/30183050/shield)](https://styleci.io/repos/30183050)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andegna/calender/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/andegna/calender/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/andegna/calender/?branch=master)
