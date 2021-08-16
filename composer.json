@@ -28,7 +28,7 @@
 		}
 	},
 	"scripts": {
-		"test": "phpunit"
+		"test": "phpunit --coverage-clover=coverage.clover"
 	},
 	"extra": {
 		"branch-alias": {

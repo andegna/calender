@@ -30,4 +30,11 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run test suite
+        env:
+          XDEBUG_MODE: coverage
         run: composer run-script test
+
+      - name: Upload Scrutinizer coverage
+        uses: sudo-bot/action-scrutinizer@latest
+        with:
+          cli-args: "--format=php-clover coverage.clover"
