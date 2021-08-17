@@ -10,7 +10,7 @@
 [![License](https://poser.pugx.org/andegna/calender/license.svg)](https://packagist.org/packages/andegna/calender)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fandegna%2Fcalender.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fandegna%2Fcalender?ref=badge_shield)
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9/big.png)](https://insight.sensiolabs.com/projects/1f0da300-92cf-4e9d-ba5a-f4fc30697ae9)
+[![SymfonyInsight](https://insight.symfony.com/projects/22a1a0d1-9999-4771-90eb-a79271985256/big.svg)](https://insight.symfony.com/projects/22a1a0d1-9999-4771-90eb-a79271985256)
 
 > If you ever want to convert **Ethiopian Calender** to any other calendar system
 > (like the Gregorian Calendar) this is the right (well-tested, well designed, high quality) package for you.
