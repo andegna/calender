@@ -7,7 +7,7 @@ use DateTime as GregorianDateTime;
 /**
  * Ethiopian Andegna DateTime class.
  */
-class DateTime
+class DateTime extends \stdClass
 {
     use Operations\Initiator;
     use Operations\Processor;
