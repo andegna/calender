@@ -197,7 +197,7 @@ class DateTime
 
     /**
      * Checks if the given date is the start of the month in the Ethiopian Calendar.
-     * 
+     *
      * @return bool
      */
     public function isStartOfTheMonth(): bool
@@ -207,7 +207,7 @@ class DateTime
 
     /**
      * Checks if the given date is the end of the month in the Ethiopian Calendar.
-     * 
+     *
      * @return bool
      */
     public function isEndOfTheMonth(): bool
