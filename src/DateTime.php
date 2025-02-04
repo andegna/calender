@@ -194,4 +194,28 @@ class DateTime extends \stdClass
     {
         return clone $this->dateTime;
     }
+
+    /**
+     * Checks if the given date is the start of the month in the Ethiopian Calendar.
+     *
+     * @return bool
+     */
+    public function isStartOfTheMonth(): bool
+    {
+        return $this->day === 1;
+    }
+
+    /**
+     * Checks if the given date is the end of the month in the Ethiopian Calendar.
+     *
+     * @return bool
+     */
+    public function isEndOfTheMonth(): bool
+    {
+        if ($this->month === 13) {
+            return $this->day === ($this->isLeapYear() ? 6 : 5);
+        }
+
+        return $this->day === 30;
+    }
 }
