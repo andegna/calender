@@ -1,4 +1,5 @@
 <?php
+
 namespace Andegna\AgeCalculator;
 
 use Andegna\DateTimeFactory;
@@ -83,7 +84,5 @@ class AgeCalculator
         $ageInterval = $currentDate->diff($gregorianDate);
 
         return $ageInterval->y;
-    }
-
-    
+    }  
 }
