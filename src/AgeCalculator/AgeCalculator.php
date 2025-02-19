@@ -84,5 +84,7 @@ class AgeCalculator
         $ageInterval = $currentDate->diff($gregorianDate);
 
         return $ageInterval->y;
+
+        
     }  
 }
