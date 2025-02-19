@@ -2,9 +2,9 @@
 namespace Andegna\AgeCalculator;
 
 use Andegna\DateTimeFactory;
-use DateTime;
 use Andegna\Exception\InvalidDateException;
-use Andegna\Validator\DateValidator as DateValidator;
+use Andegna\Validator\DateValidator;
+use DateTime;
 
 /**
  * Calculates the age based on an Ethiopian date.
@@ -85,4 +85,5 @@ class AgeCalculator
         return $ageInterval->y;
     }
 
+    
 }

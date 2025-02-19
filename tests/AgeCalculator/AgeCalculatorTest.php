@@ -10,7 +10,6 @@ class AgeCalculatorTest extends TestCase
 {
     public function testCalculateAgeReturnsInteger()
     {
-
         $calculator = new AgeCalculator(1996, 1, 21);
         $age = $calculator->calculateAge();
         $this->assertEquals($age, 21);
@@ -18,7 +17,6 @@ class AgeCalculatorTest extends TestCase
 
     public function testConstructorWithInvalidDateThrowsException()
     {
-
         $this->expectException(InvalidDateException::class);
         new AgeCalculator(2000, 14, 1);
     }
@@ -29,4 +27,5 @@ class AgeCalculatorTest extends TestCase
         $this->expectException(InvalidDateException::class);
         $calculator->calculateAge();
     }
+    
 }
