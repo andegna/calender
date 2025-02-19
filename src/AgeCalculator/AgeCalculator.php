@@ -85,8 +85,4 @@ class AgeCalculator
 
         return $ageInterval->y;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 9beb6188a67896b37904073499f88779302703f8
