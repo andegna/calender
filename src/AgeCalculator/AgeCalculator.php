@@ -57,9 +57,10 @@ class AgeCalculator
     /**
      * Calculate the age based on the Ethiopian date.
      *
-     * @return int
      *
      * @throws \Andegna\Exception\InvalidDateException
+     *
+     * @return int
      */
     public function calculateAge(): int
     {
@@ -80,6 +81,8 @@ class AgeCalculator
         }
 
         $ageInterval = $currentDate->diff($gregorianDate);
+        
         return $ageInterval->y;
     }
+    
 }
