@@ -170,7 +170,12 @@ class DateTimeTest extends TestCase
 
     public function test_datetime_processor_chaining()
     {
-        $this->expectWarning();
+        if (class_exists(\DateMalformedStringException::class)) {
+            $this->expectException(\DateMalformedStringException::class);
+        } else {
+            $this->expectWarning();
+        }
+
         $this->expectExceptionMessage('DateTime::modify(): Failed to parse time string (lorem ipsum) at position 0 (l): The timezone could not be found in the database');
 
         $this->assertFalse($this->dateTime->modify('lorem ipsum'));

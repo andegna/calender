@@ -160,11 +160,4 @@ trait Processor
         return $this->dateTime->getTimezone();
     }
 
-    /**
-     * The __wakeup handler.
-     */
-    public function __wakeup()
-    {
-        return $this->dateTime->__wakeup();
-    }
 }

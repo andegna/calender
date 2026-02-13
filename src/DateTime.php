@@ -194,4 +194,23 @@ class DateTime extends \stdClass
     {
         return clone $this->dateTime;
     }
+
+    /**
+     * @return array
+     */
+    public function __serialize(): array
+    {
+        return [
+            'dateTime' => $this->dateTime,
+        ];
+    }
+
+    /**
+     * @param array $data
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->dateTime = $data['dateTime'];
+        $this->updateComputedFields();
+    }
 }
