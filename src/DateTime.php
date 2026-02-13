@@ -174,7 +174,7 @@ class DateTime extends \stdClass
      *
      * @param GregorianDateTime|null $dateTime
      */
-    public function __construct(GregorianDateTime $dateTime = null)
+    public function __construct(?GregorianDateTime $dateTime = null)
     {
         if (null === $dateTime) {
             $this->dateTime = new GregorianDateTime('now');

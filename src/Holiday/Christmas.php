@@ -21,7 +21,7 @@ class Christmas implements HolidayInterface
      *
      * @param DateTimeZone $dateTimeZone
      */
-    public function __construct(DateTimeZone $dateTimeZone = null)
+    public function __construct(?DateTimeZone $dateTimeZone = null)
     {
         $this->dateTimeZone = $dateTimeZone;
     }

@@ -21,7 +21,7 @@ class DateTimeFactory
      *
      * @return DateTime the datetime u wanted
      */
-    public static function now(DateTimeZone $dateTimeZone = null)
+    public static function now(?DateTimeZone $dateTimeZone = null)
     {
         $dateTimeZone = self::checkForDateTimeZone($dateTimeZone);
 
@@ -35,7 +35,7 @@ class DateTimeFactory
      *
      * @return DateTimeZone a valid timezone
      */
-    protected static function checkForDateTimeZone(DateTimeZone $dateTimeZone = null)
+    protected static function checkForDateTimeZone(?DateTimeZone $dateTimeZone = null)
     {
         if (is_null($dateTimeZone)) {
             // get the default timezone from z system
@@ -65,7 +65,7 @@ class DateTimeFactory
         $hour = 0,
         $minute = 0,
         $second = 0,
-        DateTimeZone $dateTimeZone = null
+        ?DateTimeZone $dateTimeZone = null
     ) {
 
         // Convert to JDN
@@ -90,7 +90,7 @@ class DateTimeFactory
      *
      * @return DateTime the datetime u wanted
      */
-    public static function fromTimestamp($timestamp, DateTimeZone $dateTimeZone = null)
+    public static function fromTimestamp($timestamp, ?DateTimeZone $dateTimeZone = null)
     {
         $base = new GregorianDateTime(
             date('Y-m-d H:i:s', $timestamp),
@@ -120,7 +120,7 @@ class DateTimeFactory
      *
      * @return DateTime the datetime u wanted
      */
-    public static function fromConverter(Converter $con, DateTimeZone $dateTimeZone = null)
+    public static function fromConverter(Converter $con, ?DateTimeZone $dateTimeZone = null)
     {
         return static::of(
             $con->getYear(),
